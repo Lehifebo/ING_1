@@ -1,0 +1,14 @@
+{
+    "Config0001": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0002": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0003": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0004": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0005": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0006": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0007": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0008": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0009": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0010": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"],
+    "Config0011": ["mail@gmail.com", "mail@gmail.com", "mail@gmail.com"]
+
+}

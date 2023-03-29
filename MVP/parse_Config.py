@@ -1,4 +1,3 @@
-import re
 def pivotTabelSettings(config):
     with open(config, 'r') as file:#open the file for reading
         filters=parseFilters(file)

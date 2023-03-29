@@ -1,0 +1,6 @@
+Hello {},
+
+You have {} {}.
+Also, you have {} {}.
+
+Best regards
