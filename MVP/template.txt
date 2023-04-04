@@ -1,6 +1,11 @@
 Hello {},
 
-You have {} {}.
-Also, you have {} {}.
+This week score:
+
+{}:
+You have {}
+
+{}:
+You have {}
 
 Best regards

@@ -17,12 +17,8 @@ def generateEmails(table):
             formatting.append(teamName) #get the group name witouth the header
             for pair in pairs:
                 teamEmails = allEmails[teamName]
-                if(pair[1]!=0): #if the team has non-zero value
-                    formatting.append(pair[0])
-                    formatting.append(pair[1])
-                else:
-                    formatting.append("no issues with")
-                    formatting.append(pair[0])        
+                formatting.append(pair[0])
+                formatting.append(pair[1])      
             finalMail+=splitBEmails
             finalMail+=(','.join(teamEmails))
             finalMail+=splitInEmail
