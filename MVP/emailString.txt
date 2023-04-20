@@ -1,5 +1,3 @@
-
-splitBetweenEmails
 mail@gmail.com,mail@gmail.com,mail@gmail.com
 
 splitInEmail

@@ -18,8 +18,9 @@ def generateEmails(table):
             for pair in pairs:
                 teamEmails = allEmails[teamName]
                 formatting.append(pair[0])
-                formatting.append(pair[1])      
-            finalMail+=splitBEmails
+                formatting.append(pair[1])
+            if index != 0:
+                finalMail+=splitBEmails
             finalMail+=(','.join(teamEmails))
             finalMail+=splitInEmail
             finalMail+=template.format(*formatting) ## add the email to the final list
