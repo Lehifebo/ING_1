@@ -1,0 +1,23 @@
+{
+    "teams":{
+        "teamA":["name1", "name2", "name3"],
+        "teamB":["name1", "name2", "name3"]
+    },
+
+    "aggregateCollumn": "CI Config Admin Group",
+    "columns": ["CI Config Admin Group"],
+    "values":[
+        {
+          "name": "Vulnerability ID",
+          "aggfunc": "mean",
+          "fill_value": 1
+        },
+        {
+          "name": "Compliance",
+          "aggfunc": "mean",
+          "fill_value": 1
+        }
+      ],
+    "margins": true,
+    "dropna": true
+}
