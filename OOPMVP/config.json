@@ -1,0 +1,32 @@
+{
+    "teams":{
+        "Config0001":["Config0001","Config001"],
+        "Config0002":["Config0002","Config002"],
+        "Config0003":["Config0003","Config003"],
+        "Config0004":["Config0004","Config004"],
+        "Config0005":["Config0005","Config005"],
+        "Config0006":["Config0006","Config006"],
+        "Config0007":["Config0007","Config007"],
+        "Config0008":["Config0008","Config008"],
+        "Config0009":["Config0009","Config009"],
+        "Config0010":["Config0010","Config010"],
+        "Config0011":["Config0011","Config011"]
+    },
+
+    "aggregateCollumn": "CI Config Admin Group",
+    "columns": ["CI Config Admin Group"],
+    "values":[
+        {
+          "name": "Vulnerability ID",
+          "aggfunc": "mean",
+          "fill_value": 1
+        },
+        {
+          "name": "Compliance",
+          "aggfunc": "mean",
+          "fill_value": 1
+        }
+      ],
+    "margins": true,
+    "dropna": true
+}
