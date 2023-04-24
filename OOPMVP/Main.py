@@ -6,4 +6,7 @@ with open('D:\GitHub\SoftEng\OOPMVP\config.json') as f:
 
 data=dataFilter.DataFilterer('',config, pd.read_csv('D:\GitHub\SoftEng\merged_tables.csv'))
 data.map_team_names()
-print(data.df["CI Config Admin Group"])
+data.filter_data()
+data.filter_columns()
+data.convert_to_pivot()
+print(data.pivot_table)

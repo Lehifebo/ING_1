@@ -8,6 +8,7 @@ def toPivotTable(files,path):
         excel = pd.read_excel(path+file)
         # get the pivot table settings
         (filtersFile,valuesFile,indexFile,aggfuncFile) = pc.pivotTabelSettings(path+file.split('_')[0]+"_config")
+        print(filtersFile)
         #filter the data
         excel_filtered = excel.query(filtersFile)
         #create the pivot table

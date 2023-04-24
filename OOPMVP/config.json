@@ -12,21 +12,25 @@
         "Config0010":["Config0010","Config010"],
         "Config0011":["Config0011","Config011"]
     },
-
-    "aggregateCollumn": "CI Config Admin Group",
-    "columns": ["CI Config Admin Group"],
-    "values":[
-        {
-          "name": "Vulnerability ID",
-          "aggfunc": "mean",
+    
+    "aggregateColumn": "CI Config Admin Group",
+    "columns": ["CI Config Admin Group","Compliance result ID","Vulnerability ID"],
+    "values":{
+      "Vulnerability ID": {
+          "aggfunc": "count",
           "fill_value": 1
-        },
-        {
-          "name": "Compliance",
-          "aggfunc": "mean",
+      },
+      "Compliance result ID": {
+          "aggfunc": "count",
           "fill_value": 1
-        }
-      ],
+      }
+    },
+    "filters":{
+      "Advisory overdue":	"Overdue",			
+      "Environment": "Production",
+      "Test state":	"failed",
+      "Is Waived"	: "False"
+    },
     "margins": true,
     "dropna": true
 }
