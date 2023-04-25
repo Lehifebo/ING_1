@@ -1,17 +1,24 @@
+import json
 import pandas as pd
 
 
-class DataFilterer:
-    def __init__(self, path, config, df):
-        self.path = path #specify path of what or itll get confuding
-        self.config = config
-        self.all_data = df  # maybe file instead
-        self.filtered_data = None
-        self.pivot_table = None
 
-    def map_team_names(self):
+class DataFilterer:
+    def __init__(self,config, data_tuples):
+        self.config = config
+        self.data_tuples = data_tuples
+        self.filters = None
+        self.pivot_tables = []
+
+    def loop_over(self):
+        for tuple in self.data_tuples:
+            self.map_team_names(tuple)
+            filtered_data=self.filter_data(tuple)
+            self.pivot_tables.append(self.convert_to_pivot(filtered_data,tuple[0]))
+
+    def map_team_names(self,tuple):
         try:
-            self.all_data['CI Config Admin Group'] = self.all_data['CI Config Admin Group'].apply(self.get_mapping)
+            tuple[1]['CI Config Admin Group'] = tuple[1]['CI Config Admin Group'].apply(self.get_mapping)
         except ValueError as e:
             print(e)
             exit(0)
@@ -21,35 +28,37 @@ class DataFilterer:
         for team, names in team_mapping.items(): #search in each array  for the desired team names
             if team_name in names:
                 return team #if the name is found, return the mapping
-        raise ValueError("Team '" +team_name + "' has no mapping")
+        raise ValueError("Team '" + team_name + "' has no mapping")
     
-    def filter_data(self):
-        filters_df = pd.DataFrame.from_dict(self.config['filters'], orient='index', columns=['value'])
+    def filter_data(self,tuple):
+        filter=self.filters[tuple[0]]
+        filters_df = pd.DataFrame.from_dict(filter, orient='index', columns=['value'])
         filters_df['query_string'] ="(`"+ filters_df.index + "`"+ " == '" + filters_df['value'] + "'"+" | `"+ filters_df.index + "`"+ " == 'NaN')"
         query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'", "True")
-        self.all_data=self.all_data.fillna("NaN")#convert from pandas obj NaN to string
-        print(query)
-        self.filtered_data = self.all_data.query(query)
+        return tuple[1].query(query)
 
-    def convert_to_pivot(self):
+    def get_filters(self):
+        filters_by_filename = {}
+        # Loop over the filenames and retrieve the filters for each one
+        for filename in self.config["filenames"]:
+            filters_by_filename[filename] = self.config[filename]["filters"]
+        self.filters = filters_by_filename
+    
+    def convert_to_pivot(self,data,filename):
         try:
             index_columns = [self.config['aggregateColumn']]
-            values_columns = list(self.config['values'].keys())
+            values_columns = list(self.config[filename]['values'].keys())
             aggfuncs = {}
             fill_values = {}
-            for col, settings in self.config['values'].items():
+            for col, settings in self.config[filename]['values'].items():
                 aggfuncs[col] = settings['aggfunc']
                 fill_values[col] = settings['fill_value']
-            margins = self.config.get('margins', True)
-
-            self.pivot_table = pd.pivot_table(self.filtered_data,
+            return pd.pivot_table(data,
                                             index=index_columns,
                                             values=values_columns,
                                             aggfunc=aggfuncs,
-                                            fill_value=fill_values,
-                                            margins=margins)
+                                            fill_value=fill_values)
         except KeyError as e:
             print("Could not find key '{}' in config file.".format(e))
             exit(0)
-
 

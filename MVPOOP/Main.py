@@ -1,12 +1,31 @@
+import os
 import DataFilterer as dataFilter
 import pandas as pd
 import json
-with open('D:\GitHub\SoftEng\MVPOOP\config.json') as f:
+import FileReader as fr
+
+reader = fr.FileReader('Reports')
+data_tuples=reader.getExcels()
+
+relative_path_json = '../Reports/configuration.json'
+# relative_path_tables_folder = 'merged_tables.csv' 
+# # Get the absolute path of the JSON file by joining the relative path with the current file's directory
+
+absolute_path_json = os.path.join(os.path.dirname(__file__), relative_path_json)
+# absolute_path_tables_folder = os.path.join(os.path.dirname(__file__), relative_path_tables_folder)
+
+with open(absolute_path_json) as f:
             config = json.load(f)
+filterer = dataFilter.DataFilterer(config,data_tuples)
+filterer.get_filters()
 
-data=dataFilter.DataFilterer('',config, pd.read_csv('D:\GitHub\SoftEng\merged_tables.csv'))
-data.map_team_names()
-data.filter_data()
-data.convert_to_pivot()
+filterer.loop_over()
 
-print(data.pivot_table)
+print(filterer.pivot_tables)
+
+
+# data=dataFilter.DataFilterer('',config, pd.read_csv(absolute_path_tables_folder))
+# data.map_team_names()
+# data.filter_data()
+# data.convert_to_pivot()
+
