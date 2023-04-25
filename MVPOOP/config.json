@@ -14,7 +14,6 @@
     },
     
     "aggregateColumn": "CI Config Admin Group",
-    "columns": ["CI Config Admin Group","Compliance result ID","Vulnerability ID"],
     "values":{
       "Vulnerability ID": {
           "aggfunc": "count",
@@ -25,12 +24,14 @@
           "fill_value": 1
       }
     },
+    "filenames" :["TSCM","VMDSC"],
     "filters":{
       "Advisory overdue":	"Overdue",			
       "Environment": "Production",
       "Test state":	"failed",
       "Is Waived"	: "False"
     },
-    "margins": true,
-    "dropna": true
+
+    "configs":[
+    ]
 }
