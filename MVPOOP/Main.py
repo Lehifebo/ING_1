@@ -20,8 +20,7 @@ filterer = dataFilter.DataFilterer(config,data_tuples)
 filterer.get_filters()
 
 filterer.loop_over()
-
-print(filterer.pivot_tables)
+print(filterer.merged_table)
 
 
 # data=dataFilter.DataFilterer('',config, pd.read_csv(absolute_path_tables_folder))
