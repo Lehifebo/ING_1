@@ -28,17 +28,50 @@
             }
     },
     "teams":{
-        "Config0001":["Config0001","Config001"],
-        "Config0002":["Config0002","Config002"],
-        "Config0003":["Config0003","Config003"],
-        "Config0004":["Config0004","Config004"],
-        "Config0005":["Config0005","Config005"],
-        "Config0006":["Config0006","Config006"],
-        "Config0007":["Config0007","Config007"],
-        "Config0008":["Config0008","Config008"],
-        "Config0009":["Config0009","Config009"],
-        "Config0010":["Config0010","Config010"],
-        "Config0011":["Config0011","Config011"]
+        "Config0001":{
+            "aliases":["Config0001","Config001"],
+            "email_list":["email1","email2"]
+        },
+        "Config0002":{
+            "aliases":["Config0002","Config002"],
+            "email_list":["email1","email2"]
+        },
+        "Config0003":{
+            "aliases":["Config0003","Config003"],
+            "email_list":["email1","email2"]
+        },
+        "Config0004":{
+            "aliases":["Config0004","Config004"],
+            "email_list":["email1","email2"]
+        },
+        "Config0005":{
+            "aliases":["Config0005","Config005"],
+            "email_list":["email1","email2"]
+        },
+        "Config0006":{
+            "aliases":["Config0006","Config006"],
+            "email_list":["email1","email2"]
+        },
+        "Config0007":{
+            "aliases":["Config0007","Config007"],
+            "email_list":["email1","email2"]
+        },
+        "Config0008":{
+            "aliases":["Config0008","Config008"],
+            "email_list":["email1","email2"]
+        },
+        "Config0009":{
+            "aliases":["Config0009","Config009"],
+            "email_list":["email1","email2"]
+        },
+        "Config0010":{
+            "aliases":["Config0010","Config010"],
+            "email_list":["email1","email2"]
+        },
+        "Config0011":{
+            "aliases":["Config0011","Config011"],
+            "email_list":["email1","email2"]
+        }
     }
 
 }

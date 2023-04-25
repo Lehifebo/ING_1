@@ -7,6 +7,7 @@ class DataFilterer:
         self.filters = None
         self.pivot_tables = []
         self.merged_table = None
+
     def loop_over(self):
         for tuple in self.data_tuples:
             self.map_team_names(tuple)
@@ -24,7 +25,7 @@ class DataFilterer:
     def get_mapping(self,team_name):
         team_mapping = self.config['teams']
         for team, names in team_mapping.items(): #search in each array  for the desired team names
-            if team_name in names:
+            if team_name in names['aliases']:
                 return team #if the name is found, return the mapping
         raise ValueError("Team '" + team_name + "' has no mapping")
     
@@ -32,7 +33,7 @@ class DataFilterer:
         filter=self.filters[tuple[0]]
         filters_df = pd.DataFrame.from_dict(filter, orient='index', columns=['value'])
         filters_df['query_string'] ="(`"+ filters_df.index + "`"+ " == '" + filters_df['value'] + "'"+" | `"+ filters_df.index + "`"+ " == 'NaN')"
-        query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'", "True")
+        query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'", "True") #map strings True and False to actual booleans
         return tuple[1].query(query)
 
     def get_filters(self):
