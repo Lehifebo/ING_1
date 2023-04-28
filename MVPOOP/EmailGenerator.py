@@ -1,45 +1,48 @@
 import json
 import os
 
-
 class EmailGenerator:
     def __init__(self, template_path, team_list):
         self.team_list = team_list
-        self.template_path = template_path
-
-    def generateEmails(self,table):
-        splitInEmail = "\n\nsplitInEmail\n\n"
-        splitBEmails = "\nsplitBetweenEmails\n"
-        finalMail = ''
-        path = os.path.dirname(__file__)  # get the absolute path of the file
-
-        template = self.readTemplate(path + "\\template.txt")  # get the template string
-        allEmails = self.readEmails((path + "\\emailingList.txt"))
-
-        for index, row in table.iterrows():
-            pairs = zip(table.columns, row.values)  # match the value with the header
-            formatting = []
-            teamName = next(pairs)[1]
-            if teamName in allEmails:  # if the header is in the email listing
-                formatting.append(teamName)  # get the group name witouth the header
-                for pair in pairs:
-                    teamEmails = allEmails[teamName]
-                    formatting.append(pair[0])
-                    formatting.append(pair[1])
-                if index != 0:
-                    finalMail += splitBEmails
-                finalMail += (','.join(teamEmails))
-                finalMail += splitInEmail
-                finalMail += template.format(*formatting)  ## add the email to the final list
-            else:
-                finalMail.append("Team emails not found.")
-
-        return finalMail
-
-    def readTemplate(self,path):
+        self.template = self.read_template(template_path)
+        self.splitInEmail ="\n\nsplitInEmail\n\n"
+        self.split_between_mails = "\nsplitBetweenEmails\n"
+        
+    def read_template(self,path):
         with open(path, 'r') as file:
             return file.read()
+    
+    def generate_email(self,team):
+        email=''
+        email+=self.add_email_list(team)
+        email+=self.fill_template(team)
+        return email
+        
+    def add_email_list(self,team):
+        email_list=''
+        for item in team.emailing_list:
+            email_list+=item +","
+        email_list=email_list[:-1]
+        email_list+=self.splitInEmail
+        return email_list
 
-    def readEmails(self,path):
-        with open(path, 'r') as file:
-            return json.loads(file.read())
+    def fill_template(self, team):
+        data=[]
+        pairs=zip(team.report.index,team.report.values) #match the value with the header
+        data.append(next(pairs)[1]) #skip the name
+        for pair in pairs:
+            data.append(pair[0]) #header
+            data.append(pair[1]) #value
+        return self.template.format(*data)
+         
+    def generate_emails_string(self):
+        final_mail = ''
+        try:
+            for team in self.team_list:
+                team_email=self.generate_email(team)
+                final_mail+=team_email
+                final_mail+=self.split_between_mails
+        except Exception as e:
+            print('You have more/less {} than collumns in table')
+        final_mail = final_mail.rstrip(self.split_between_mails) #remove the final splitBetweenEmails
+        return final_mail
