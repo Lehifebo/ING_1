@@ -1,12 +1,12 @@
 import os
-import data_filterer
+import data_filterer as df
 import json
 import file_reader as fr
-import team
-import email_generator
+import team as t
+import email_generator as eg
 
 if __name__ == "__main__":
-    reader = fr.FileReader('Reports')
+    reader = fr.FileReader('../Reports/')
     data_tuples = reader.get_excels()
 
     relative_path_json = '../Reports/configuration.json'
@@ -18,17 +18,16 @@ if __name__ == "__main__":
 
     with open(absolute_path_json) as f:
         config = json.load(f)
-    filterer = data_filterer.DataFilterer(config, data_tuples)
+    filterer = df.DataFilterer(config, data_tuples)
     filterer.get_filters()
-
     filterer.loop_over()
 
     teams = []
     for index, row in filterer.merged_table.iterrows():
-        team = team.Team(config['teams'][row[0]]['email_list'], row)
+        team = t.Team(config['teams'][row[0]]['email_list'], row)
         teams.append(team)
 
-    email_gen = email_generator.EmailGenerator(absolute_path_template, teams)
+    email_gen = eg.EmailGenerator(absolute_path_template, teams)
     email_string = email_gen.generate_emails_string()
 
     email_string_path = "emailStringTest.txt"  # shared folder

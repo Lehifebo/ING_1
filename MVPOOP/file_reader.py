@@ -13,6 +13,6 @@ class FileReader:
         for file_name in os.listdir(path):
             if os.path.isfile(os.path.join(path, file_name)):
                 if "xlsx" in file_name:
-                    df = pd.read_excel(self.path + '/' + file_name)  # read the excel files to pandas df
+                    df = pd.read_excel(self.path + file_name)  # read the excel files to pandas df
                     dataframes.append((file_name.split('_')[0], df))  # assume that the file names are matching XXXX_
         return dataframes

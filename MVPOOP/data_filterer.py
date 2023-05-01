@@ -14,7 +14,7 @@ class DataFilterer:
             self.map_team_names(tuple)
             filtered_data = self.filter_data(tuple)
             self.pivot_tables.append(self.convert_to_pivot(filtered_data, tuple[0]))
-        self.agregate_pivot_tables()
+        self.aggregate_pivot_tables()
 
     def map_team_names(self, tuple):
         try:
@@ -36,7 +36,8 @@ class DataFilterer:
         filters_df['query_string'] = "(`" + filters_df.index + "`" + " == '" + filters_df[
             'value'] + "'" + " | `" + filters_df.index + "`" + " == 'NaN')"
         query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'",
-                                                                                           "True")  # map strings True and False to actual booleans
+                                                                                           "True")  # map strings
+        # True and False to actual booleans
         return tuple[1].query(query)
 
     def get_filters(self):
@@ -64,7 +65,7 @@ class DataFilterer:
             print("Could not find key '{}' in config file.".format(e))
             exit(0)
 
-    def agregate_pivot_tables(self):
+    def aggregate_pivot_tables(self):
         self.merged_table = pd.DataFrame(columns=[self.config['aggregateColumn']])
         for table in self.pivot_tables:
             self.merged_table = pd.merge(self.merged_table, table, on=self.config['aggregateColumn'], how='outer')
