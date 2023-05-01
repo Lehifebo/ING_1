@@ -26,6 +26,7 @@ if __name__ == "__main__":
     for index, row in filterer.merged_table.iterrows():
         team = t.Team(config['teams'][row[0]]['email_list'], row)
         teams.append(team)
+        team.add_to_history(row)
 
     email_gen = eg.EmailGenerator(absolute_path_template, teams)
     email_string = email_gen.generate_emails_string()
