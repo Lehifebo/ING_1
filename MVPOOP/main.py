@@ -23,8 +23,10 @@ if __name__ == "__main__":
     filterer.loop_over()
 
     teams = []
+    team_dict = config['teams']
+    team_names = list(team_dict.keys())
     for index, row in filterer.merged_table.iterrows():
-        team = t.Team(config['teams'][row[0]]['email_list'], row)
+        team = t.Team(team_dict[row[0]]['email_list'], row, team_names[index])
         teams.append(team)
         team.add_to_history(row)
 
