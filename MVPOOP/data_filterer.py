@@ -13,12 +13,14 @@ class DataFilterer:
         for tuple in self.data_tuples:
             self.map_team_names(tuple)
             filtered_data = self.filter_data(tuple)
-            self.pivot_tables.append(self.convert_to_pivot(filtered_data, tuple[0]))
+            self.pivot_tables.append(
+                self.convert_to_pivot(filtered_data, tuple[0]))
         self.aggregate_pivot_tables()
 
     def map_team_names(self, tuple):
         try:
-            tuple[1]['CI Config Admin Group'] = tuple[1]['CI Config Admin Group'].apply(self.get_mapping)
+            tuple[1]['CI Config Admin Group'] = tuple[1]['CI Config Admin Group'].apply(
+                self.get_mapping)
         except ValueError as e:
             print(e)
             exit(0)
@@ -32,7 +34,8 @@ class DataFilterer:
 
     def filter_data(self, tuple):
         filter = self.filters[tuple[0]]
-        filters_df = pd.DataFrame.from_dict(filter, orient='index', columns=['value'])
+        filters_df = pd.DataFrame.from_dict(
+            filter, orient='index', columns=['value'])
         filters_df['query_string'] = "(`" + filters_df.index + "`" + " == '" + filters_df[
             'value'] + "'" + " | `" + filters_df.index + "`" + " == 'NaN')"
         query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'",
@@ -70,7 +73,8 @@ class DataFilterer:
                 filter_name = self.config[filename]['preference_filter']
                 value_name = self.config[filename]['preference_value']
 
-                filtered_data = filtered_data[(filtered_data[filter_name] == value_name)]
+                filtered_data = filtered_data[(
+                    filtered_data[filter_name] == value_name)]
                 filtered_pivot = pd.pivot_table(filtered_data,
                                                 index=index_columns,
                                                 values=values_columns,
@@ -88,7 +92,9 @@ class DataFilterer:
             exit(0)
 
     def aggregate_pivot_tables(self):
-        self.merged_table = pd.DataFrame(columns=[self.config['aggregateColumn']])
+        self.merged_table = pd.DataFrame(
+            columns=[self.config['aggregateColumn']])
         for table in self.pivot_tables:
-            self.merged_table = pd.merge(self.merged_table, table, on=self.config['aggregateColumn'], how='outer')
+            self.merged_table = pd.merge(
+                self.merged_table, table, on=self.config['aggregateColumn'], how='outer')
         self.merged_table.fillna(0, inplace=True)
