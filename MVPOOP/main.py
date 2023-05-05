@@ -19,7 +19,6 @@ if __name__ == "__main__":
     with open(absolute_path_json) as f:
         config = json.load(f)
     filterer = df.DataFilterer(config, data_tuples)
-    filterer.get_filters()
     filterer.loop_over()
 
     teams = []

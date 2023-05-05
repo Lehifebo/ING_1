@@ -16,7 +16,6 @@
     },
     "VmDCs" : {
         "filters":{
-            "Advisory overdue":	"Overdue",			
             "Environment": "Production",
             "Is Waived"	: "False"
           },

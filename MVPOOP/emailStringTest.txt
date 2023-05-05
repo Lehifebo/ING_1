@@ -10,7 +10,7 @@ Compliance result ID:
 You have 142.0
 
 Vulnerability ID:
-You have 12.0
+You have 20.0
 
 Best regards
 splitBetweenEmails
@@ -26,7 +26,7 @@ Compliance result ID:
 You have 9.0
 
 Vulnerability ID:
-You have 12.0
+You have 83.0
 
 Best regards
 splitBetweenEmails
@@ -42,7 +42,7 @@ Compliance result ID:
 You have 16.0
 
 Vulnerability ID:
-You have 8.0
+You have 18.0
 
 Best regards
 splitBetweenEmails
@@ -58,7 +58,7 @@ Compliance result ID:
 You have 6.0
 
 Vulnerability ID:
-You have 0.0
+You have 9.0
 
 Best regards
 splitBetweenEmails
@@ -90,7 +90,7 @@ Compliance result ID:
 You have 324.0
 
 Vulnerability ID:
-You have 0.0
+You have 111.0
 
 Best regards
 splitBetweenEmails
@@ -106,7 +106,7 @@ Compliance result ID:
 You have 84.0
 
 Vulnerability ID:
-You have 1.0
+You have 84.0
 
 Best regards
 splitBetweenEmails
@@ -122,7 +122,7 @@ Compliance result ID:
 You have 37.0
 
 Vulnerability ID:
-You have 6.0
+You have 34.0
 
 Best regards
 splitBetweenEmails
@@ -154,7 +154,7 @@ Compliance result ID:
 You have 0.0
 
 Vulnerability ID:
-You have 9.0
+You have 64.0
 
 Best regards
 splitBetweenEmails
@@ -170,6 +170,6 @@ Compliance result ID:
 You have 0.0
 
 Vulnerability ID:
-You have 13.0
+You have 45.0
 
 Best regard
