@@ -5,16 +5,23 @@ import file_reader as fr
 import team as t
 import email_generator as eg
 
+mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Get the path to the Reports directory relative to the MVPOOP directory
+reports_dir = os.path.join(mvpoop_dir, "Reports")
+
 if __name__ == "__main__":
-    reader = fr.FileReader('../Reports/')
+    reader = fr.FileReader(reports_dir)
     data_tuples = reader.get_excels()
 
     relative_path_json = '../Reports/configuration.json'
     relative_path_template = '../Reports/template.txt'
     # # Get the absolute path of the JSON file by joining the relative path with the current file's directory
 
-    absolute_path_json = os.path.join(os.path.dirname(__file__), relative_path_json)
-    absolute_path_template = os.path.join(os.path.dirname(__file__), relative_path_template)
+    absolute_path_json = os.path.join(
+        os.path.dirname(__file__), relative_path_json)
+    absolute_path_template = os.path.join(
+        os.path.dirname(__file__), relative_path_template)
 
     with open(absolute_path_json) as f:
         config = json.load(f)

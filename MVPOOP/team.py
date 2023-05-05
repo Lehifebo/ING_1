@@ -13,14 +13,20 @@ class Team:
 
     # maybe put a try catch that tries to open the file and do everything else create the file and do everything
     def add_to_history(self, report):
-        self.path = "../HistoricalData/" + self.team_name + "_data.csv"  # path should be a field
-        if os.path.exists(self.path):  # probs use try catch instead
-            self.historical_data = pd.read_csv(self.path)
+        mvpoop_dir = os.path.dirname(
+            os.path.dirname(os.path.abspath(__file__)))
+        hist_dir = os.path.join(
+            mvpoop_dir, "HistoricalData", self.team_name, "\_data.csv")
+        if os.path.exists(hist_dir):  # probs use try catch instead
+            self.historical_data = pd.read_csv(hist_dir)
             report['Date'] = datetime.now().date()
-            self.historical_data = pd.concat([self.historical_data, report.to_frame().T], ignore_index=True)
-            self.historical_data.to_csv(self.path, index=False)
+            self.historical_data = pd.concat(
+                [self.historical_data, report.to_frame().T], ignore_index=True)
+            self.historical_data.to_csv(hist_dir, index=False)
         else:
             report['Date'] = datetime.now().date()
-            data = pd.DataFrame(columns=['CI Config Admin Group', 'Compliance result ID', 'Vulnerability ID', 'Date'])
-            self.historical_data = pd.concat([data, report.to_frame().T], ignore_index=True)
-            self.historical_data.to_csv(self.path, index=False)
+            data = pd.DataFrame(columns=[
+                                'CI Config Admin Group', 'Compliance result ID', 'Vulnerability ID', 'Date'])
+            self.historical_data = pd.concat(
+                [data, report.to_frame().T], ignore_index=True)
+            self.historical_data.to_csv(hist_dir, index=False)
