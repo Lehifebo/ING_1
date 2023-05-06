@@ -35,9 +35,8 @@ class DataFilterer:
         filters_df = pd.DataFrame.from_dict(filter, orient='index', columns=['value'])
         filters_df['query_string'] = "(`" + filters_df.index + "`" + " == '" + filters_df[
             'value'] + "'" + " | `" + filters_df.index + "`" + " == 'NaN')"
-        query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'",
-                                                                                           "True")  # map strings
-        # True and False to actual booleans
+        # map strings True and False to actual booleans
+        query = ' & '.join(filters_df['query_string']).replace("'False'", "False").replace("'True'", "True")
         return tuple[1].query(query)
 
     def get_filters(self):

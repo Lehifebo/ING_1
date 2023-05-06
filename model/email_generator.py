@@ -44,6 +44,6 @@ class EmailGenerator:
                 final_mail += team_email
                 final_mail += self.split_between_mails
         except Exception as e:
-            print('You have more/less {} than collumns in table')
+            print('You have more/less {} than columns in table')
         final_mail = final_mail.rstrip(self.split_between_mails)  # remove the final splitBetweenEmails
         return final_mail

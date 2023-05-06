@@ -6,11 +6,11 @@ import team as t
 import email_generator as eg
 
 if __name__ == "__main__":
-    reader = fr.FileReader('../Reports/')
+    reader = fr.FileReader('../excel_data/')
     data_tuples = reader.get_excels()
 
-    relative_path_json = '../Reports/configuration.json'
-    relative_path_template = '../Reports/template.txt'
+    relative_path_json = '../configurations/configuration.json'
+    relative_path_template = '../configurations/template.txt'
     # # Get the absolute path of the JSON file by joining the relative path with the current file's directory
 
     absolute_path_json = os.path.join(os.path.dirname(__file__), relative_path_json)

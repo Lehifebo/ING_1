@@ -2,16 +2,16 @@
     "aggregateColumn": "CI Config Admin Group",
     "filenames" :["TscmDCs","VmDCs"],
     "TscmDCs" : {
-        "filters":{	
-            "Environment": "Production",
+        "filters":{
+            "Environment" : "Production",
             "Test state":	"failed"
           },
-          
         "values":{
             "Compliance result ID": {
                 "aggfunc": "count",
                 "fill_value": 1
             }
+
           }
     },
     "VmDCs" : {
@@ -19,12 +19,14 @@
             "Environment": "Production",
             "Is Waived"	: "False"
           },
-          "values":{
-            "Vulnerability ID": {
-                    "aggfunc": "count",
-                    "fill_value": 1
-                }
+        "preference_filter" : "Advisory overdue",
+        "preference_value" : "Overdue",
+        "values":{
+        "Vulnerability ID": {
+                "aggfunc": "count",
+                "fill_value": 1
             }
+        }
     },
     "teams":{
         "Config0001":{
