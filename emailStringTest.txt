@@ -1,0 +1,175 @@
+email1,email2
+
+splitInEmail
+
+Hello Config0001,
+
+This week score:
+
+Compliance result ID:
+You have 142.0
+
+Vulnerability ID:
+You have 20.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0003,
+
+This week score:
+
+Compliance result ID:
+You have 9.0
+
+Vulnerability ID:
+You have 83.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0004,
+
+This week score:
+
+Compliance result ID:
+You have 16.0
+
+Vulnerability ID:
+You have 18.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0006,
+
+This week score:
+
+Compliance result ID:
+You have 6.0
+
+Vulnerability ID:
+You have 9.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0007,
+
+This week score:
+
+Compliance result ID:
+You have 4.0
+
+Vulnerability ID:
+You have 0.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0008,
+
+This week score:
+
+Compliance result ID:
+You have 324.0
+
+Vulnerability ID:
+You have 111.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0009,
+
+This week score:
+
+Compliance result ID:
+You have 84.0
+
+Vulnerability ID:
+You have 84.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0010,
+
+This week score:
+
+Compliance result ID:
+You have 37.0
+
+Vulnerability ID:
+You have 34.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0011,
+
+This week score:
+
+Compliance result ID:
+You have 4.0
+
+Vulnerability ID:
+You have 0.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0002,
+
+This week score:
+
+Compliance result ID:
+You have 0.0
+
+Vulnerability ID:
+You have 64.0
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0005,
+
+This week score:
+
+Compliance result ID:
+You have 0.0
+
+Vulnerability ID:
+You have 45.0
+
+Best regard

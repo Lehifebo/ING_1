@@ -25,7 +25,7 @@ class TestDataFilterer(unittest.TestCase):
         })
         # Create a DataFilterer instance and call the map_team_names method
         filterer = df.DataFilterer(config, [(0, data)])
-        
+
         filterer.map_team_names((0, data))
 
         # Check that the team names have been mapped correctly
@@ -82,10 +82,8 @@ class TestDataFilterer(unittest.TestCase):
 
         # Create a mock data tuple with a DataFrame containing data
         data = pd.DataFrame({
-            'filenames': ['amumu','amumu','amumu','amumu']
+            'filenames': ['amumu', 'amumu', 'amumu', 'amumu']
         })
-
-        
 
         # Create a DataFilterer instance and call the get_filters method
         filterer = df.DataFilterer(config, [(0, data)])

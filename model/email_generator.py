@@ -29,7 +29,8 @@ class EmailGenerator:
 
     def fill_template(self, team):
         data = []
-        pairs = zip(team.report.index, team.report.values)  # match the value with the header
+        # match the value with the header
+        pairs = zip(team.report.index, team.report.values)
         data.append(next(pairs)[1])  # skip the name
         for pair in pairs:
             data.append(pair[0])  # header
@@ -45,5 +46,6 @@ class EmailGenerator:
                 final_mail += self.split_between_mails
         except Exception as e:
             print('You have more/less {} than columns in table')
-        final_mail = final_mail.rstrip(self.split_between_mails)  # remove the final splitBetweenEmails
+        # remove the final splitBetweenEmails
+        final_mail = final_mail.rstrip(self.split_between_mails)
         return final_mail
