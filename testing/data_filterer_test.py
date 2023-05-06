@@ -1,11 +1,12 @@
 import unittest
-
+import sys
 import pandas as pd
 
 
-import data_filterer as df
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from model.data_filterer import DataFilterer
 
-
+#Not working, waiting until the datafilterer is in a more stable state.
 class TestDataFilterer(unittest.TestCase):
 
     def test_map_team_names(self):
