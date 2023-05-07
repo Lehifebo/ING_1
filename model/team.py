@@ -2,6 +2,11 @@ import os
 import pandas as pd
 from datetime import datetime
 
+mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Get the path to the Reports directory relative to the MVPOOP directory
+hist_dir = os.path.join(mvpoop_dir, "historical_data")
+
 
 class Team:
     def __init__(self, emailing_list, report, team_name):
@@ -14,7 +19,7 @@ class Team:
     def add_to_history(self, report):
         columns = ['CI Config Admin Group', 'Compliance result ID',
                    'Vulnerability ID', 'Total Vulnerability ID', 'Date']  # maybe from a config file
-        self.path = "../historical_data/" + self.team_name + "_data.csv"
+        self.path = os.path.join(hist_dir,"_data.csv")
         try:
             self.historical_data = pd.read_csv(self.path)
         except FileNotFoundError:
