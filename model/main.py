@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     email_gen = eg.EmailGenerator(absolute_path_template, teams)
     email_string = email_gen.generate_emails_string()
-
+    email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
     email_string_path = "emailStringTest.txt"  # shared folder
     f = open(email_string_path, "w")
     f.write(email_string)

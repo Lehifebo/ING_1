@@ -49,3 +49,12 @@ class EmailGenerator:
         # remove the final splitBetweenEmails
         final_mail = final_mail.rstrip(self.split_between_mails)
         return final_mail
+
+    def overview_email(self, email, overview):
+        string = ''
+        string += self.split_between_mails
+        string += email
+        string += self.splitInEmail
+        string += "Here is an overview of the teams \n"
+        string += overview.to_string()
+        return string

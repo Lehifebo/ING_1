@@ -73,6 +73,7 @@
             "aliases":["Config0011","Config011"],
             "email_list":["email1","email2"]
         }
-    }
+    },
+    "tribe_lead": "emailTribeLead"
 
 }
