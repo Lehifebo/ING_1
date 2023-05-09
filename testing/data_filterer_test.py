@@ -1,10 +1,11 @@
 import unittest
 import sys
 import pandas as pd
+import os
 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from model.data_filterer import DataFilterer
+from model.data_filterer import DataFilterer as df
 
 #Not working, waiting until the datafilterer is in a more stable state.
 class TestDataFilterer(unittest.TestCase):
