@@ -17,9 +17,10 @@ class Team:
         self.path = None
 
     def add_to_history(self, report):
+        append = self.team_name+"_data.csv"
         columns = ['CI Config Admin Group', 'Compliance result ID',
                    'Vulnerability ID', 'Total Vulnerability ID', 'Date']  # maybe from a config file
-        self.path = os.path.join(hist_dir,"_data.csv")
+        self.path = os.path.join(hist_dir, append)
         try:
             self.historical_data = pd.read_csv(self.path)
         except FileNotFoundError:
