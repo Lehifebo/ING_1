@@ -56,5 +56,6 @@ class EmailGenerator:
         string += email
         string += self.splitInEmail
         string += "Here is an overview of the teams \n"
-        string += overview.to_string()
+        string += overview.to_string(index=False)
+        string +="\n Best Regards, \n Name"
         return string
