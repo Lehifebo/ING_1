@@ -4,7 +4,7 @@ import json
 import file_reader as fr
 import team as t
 import email_generator as eg
-
+import logging
 mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Get the path to the Reports directory relative to the MVPOOP directory
@@ -32,14 +32,23 @@ if __name__ == "__main__":
     team_dict = config['teams']
     team_names = list(team_dict.keys())
     for index, row in filterer.merged_table.iterrows():
-        team = t.Team(team_dict[row[0]]['email_list'], row, team_names[index])
-        teams.append(team)
-        team.add_to_history(row)
+        try:
+            team = t.Team(team_dict[row[0]]['email_list'], row, team_names[index])
+            teams.append(team)
+            team.add_to_history(row)
+        except KeyError as e:
+            logging.error(f"{e} is missing for team {team_names[index]}")
+            exit(0)
+
 
     email_gen = eg.EmailGenerator(absolute_path_template, teams)
     email_string = email_gen.generate_emails_string()
-    email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
-    email_string_path = "emailStringTest.txt"  # shared folder
+    try:
+        email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
+        email_string_path = "emailStringTest.txt"  # shared folder
+    except KeyError as e:
+        logging.warning(f"{e} is not set.")
+        exit(0)
     f = open(email_string_path, "w")
     f.write(email_string)
     f.close()

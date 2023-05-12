@@ -12,7 +12,7 @@ class TestEmailGenerator(unittest.TestCase):
 
     def test_read_template(self):
         # Test that the method returns the correct content of the template file
-        template_content = self.email_generator.read_template(TEMPLATE_PATH)
+        template_content = read_template(TEMPLATE_PATH)
         expected_content = '{0},\n\nSales\n{1}\nExpenses\n{2}'
         self.assertEqual(template_content, expected_content)
 

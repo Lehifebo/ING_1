@@ -1,17 +1,19 @@
 import json
+import logging
 import os
+
+
+def read_template(path):
+    with open(path, 'r') as file:
+        return file.read()
 
 
 class EmailGenerator:
     def __init__(self, template_path, team_list):
         self.team_list = team_list
-        self.template = self.read_template(template_path)
+        self.template = read_template(template_path)
         self.splitInEmail = "\n\nsplitInEmail\n\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
-
-    def read_template(self, path):
-        with open(path, 'r') as file:
-            return file.read()
 
     def generate_email(self, team):
         email = ''
@@ -44,8 +46,9 @@ class EmailGenerator:
                 team_email = self.generate_email(team)
                 final_mail += team_email
                 final_mail += self.split_between_mails
-        except Exception as e:
-            print('You have more/less {} than columns in table')
+        except KeyError as e:
+            logging.error('You have more/less {} than columns in table')
+            exit(0)
         # remove the final splitBetweenEmails
         final_mail = final_mail.rstrip(self.split_between_mails)
         return final_mail

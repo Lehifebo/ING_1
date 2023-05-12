@@ -6,7 +6,8 @@ class GraphGenerator:
     def __init__(self, maybe_path):
         self.maybe_path = maybe_path
 
-    def fix_date(self, data):
+    @staticmethod
+    def fix_date(data):
         # Convert the 'Date' column to a datetime object
         data['Date'] = pd.to_datetime(data['Date'])
         data['Date'] = data['Date'].dt.strftime('%m-%d')

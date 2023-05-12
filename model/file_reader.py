@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import logging
 
 
 class FileReader:
@@ -10,7 +11,7 @@ class FileReader:
         # Get the current directory
         path = self.path
         if not os.path.exists(path):
-            raise ValueError(f"Path {path} does not exist.")
+            logging.warning(f"Path {path} does not exist.")
         dataframes = []
         for file_name in os.listdir(path):
             if os.path.isfile(os.path.join(path, file_name)):
