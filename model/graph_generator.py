@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 
 class GraphGenerator:
-    def __init__(self, maybe_path):
-        self.maybe_path = maybe_path
+    def __init__(self, teams):
+        self.teams = teams
 
     @staticmethod
     def fix_date(data):
@@ -15,9 +15,12 @@ class GraphGenerator:
         data.set_index('Date', inplace=True)
         return data
 
-    def team_graph(self):
-        # pathing needs to be fixed
-        data = pd.read_csv("../historical_data/Config0001_data.csv")
+    def create_team_graphs(self):
+        for team in self.teams:
+            fig = self.team_graph(team)
+            fig.savefig("../output/"+team.team_name+"_graph.png") # maybe pathing needs to be fixed
+    def team_graph(self, team):
+        data = team.historical_data
         data = self.fix_date(data)
         # Create a figure and axis object
         fig, ax = plt.subplots()
@@ -27,13 +30,15 @@ class GraphGenerator:
             data[issue].plot(ax=ax, label=issue)
 
         # Set the title, legend, and axis labels
-        ax.set_title('Issues for team x')
+        ax.set_title('Issues for team '+team.team_name)
         ax.legend()
         ax.set_xlabel('Date')
         ax.set_ylabel('Count')
 
         # Show the plot
         plt.show()
+        return fig
+
 
     def get_data_tuples(self):
         datasets = []
@@ -43,6 +48,7 @@ class GraphGenerator:
             historical_data = self.fix_date(historical_data)
             datasets.append((config_name, historical_data))
         return datasets
+
 
     def issue_graph(self, issue):
         # issue = 'Vulnerability ID'

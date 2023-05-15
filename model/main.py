@@ -5,6 +5,7 @@ import file_reader as fr
 import team as t
 import email_generator as eg
 import logging
+import graph_generator as gg
 
 mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -49,10 +50,12 @@ if __name__ == "__main__":
     email_string = email_gen.generate_emails_string()
     try:
         email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
-        email_string_path = "emailStringTest.txt"  # shared folder
+        email_string_path = "../output/emailStringTest.txt"  # shared folder
+        f = open(email_string_path, "w")
+        f.write(email_string)
+        f.close()
     except KeyError as e:
         logging.warning(f"{e} is not set.")
         exit(0)
-    f = open(email_string_path, "w")
-    f.write(email_string)
-    f.close()
+    graph_gen = gg.GraphGenerator(teams)
+    graph_gen.create_team_graphs()
