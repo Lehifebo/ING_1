@@ -18,27 +18,23 @@ class GraphGenerator:
     def create_team_graphs(self):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig("../output/"+team.team_name+"_graph.png") # maybe pathing needs to be fixed
+            fig.savefig("../output/" + team.team_name + "_graph.png")  # maybe pathing needs to be fixed
+
     def team_graph(self, team):
         data = team.historical_data
         data = self.fix_date(data)
+        columns = data.columns.to_list()
         # Create a figure and axis object
         fig, ax = plt.subplots()
-        issues = ['Compliance result ID',
-                  'Vulnerability ID', 'Total Vulnerability ID']
+        issues = columns[1:]
         for issue in issues:
             data[issue].plot(ax=ax, label=issue)
-
         # Set the title, legend, and axis labels
-        ax.set_title('Issues for team '+team.team_name)
+        ax.set_title('Issues for team ' + team.team_name)
         ax.legend()
         ax.set_xlabel('Date')
         ax.set_ylabel('Count')
-
-        # Show the plot
-        plt.show()
         return fig
-
 
     def get_data_tuples(self):
         datasets = []
@@ -48,7 +44,6 @@ class GraphGenerator:
             historical_data = self.fix_date(historical_data)
             datasets.append((config_name, historical_data))
         return datasets
-
 
     def issue_graph(self, issue):
         # issue = 'Vulnerability ID'
@@ -81,8 +76,3 @@ class GraphGenerator:
 
             # show the graph
         plt.show()
-
-
-if __name__ == "__main__":
-    gg = GraphGenerator("idk")
-    gg.team_graph()
