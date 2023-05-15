@@ -9,9 +9,10 @@ def read_template(path):
 
 
 class EmailGenerator:
-    def __init__(self, template_path, team_list):
+    def __init__(self, template_path, tribe_lead_template_path, team_list):
         self.team_list = team_list
         self.template = read_template(template_path)
+        self.tribe_lead_template = read_template(tribe_lead_template_path)
         self.splitInEmail = "\n\nsplitInEmail\n\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
 
@@ -58,7 +59,11 @@ class EmailGenerator:
         string += self.split_between_mails
         string += email
         string += self.splitInEmail
-        string += "Here is an overview of the teams \n"
-        string += overview.to_string(index=False)
-        string +="\n Best Regards, \n Name"
+        to_string = overview.to_string(index=False)
+        print(to_string)
+        try:
+            string += self.tribe_lead_template.format(to_string)
+        except IndexError:
+            logging.error("The number of {} is greater than 1.")
+            exit(0)
         return string

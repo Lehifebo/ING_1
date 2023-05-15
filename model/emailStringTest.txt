@@ -146,7 +146,7 @@ email1,email2
 
 splitInEmail
 
-Hello Config000,
+Hello Config0002,
 
 This week score:
 
@@ -178,7 +178,10 @@ emailTribeLead
 
 splitInEmail
 
-Here is an overview of the teams 
+Hello,
+
+This week performance of the teams:
+
 CI Config Admin Group  Compliance result ID  Vulnerability ID  Total Vulnerability ID
            Config0001                 142.0              20.0                    12.0
            Config0003                   9.0              83.0                    12.0
@@ -189,7 +192,7 @@ CI Config Admin Group  Compliance result ID  Vulnerability ID  Total Vulnerabili
            Config0009                  84.0              84.0                     1.0
            Config0010                  37.0              34.0                     6.0
            Config0011                   4.0               0.0                     0.0
-            Config000                   0.0              64.0                     9.0
+           Config0002                   0.0              64.0                     9.0
            Config0005                   0.0              45.0                    13.0
- Best Regards, 
- Name
+
+Best regards

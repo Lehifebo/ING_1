@@ -5,6 +5,7 @@ import file_reader as fr
 import team as t
 import email_generator as eg
 import logging
+
 mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Get the path to the Reports directory relative to the MVPOOP directory
@@ -16,12 +17,16 @@ if __name__ == "__main__":
 
     relative_path_json = '../configurations/configuration.json'
     relative_path_template = '../configurations/template.txt'
+    relative_path_template_tribe_lead = '../configurations/tribeLeadTemplate.txt'
+
     # # Get the absolute path of the JSON file by joining the relative path with the current file's directory
 
     absolute_path_json = os.path.join(
         os.path.dirname(__file__), relative_path_json)
     absolute_path_template = os.path.join(
         os.path.dirname(__file__), relative_path_template)
+    absolute_path_template_tribe_lead = os.path.join(
+        os.path.dirname(__file__), relative_path_template_tribe_lead)
 
     with open(absolute_path_json) as f:
         config = json.load(f)
@@ -40,8 +45,7 @@ if __name__ == "__main__":
             logging.error(f"{e} is missing for team {team_names[index]}")
             exit(0)
 
-
-    email_gen = eg.EmailGenerator(absolute_path_template, teams)
+    email_gen = eg.EmailGenerator(absolute_path_template, absolute_path_template_tribe_lead, teams)
     email_string = email_gen.generate_emails_string()
     try:
         email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
