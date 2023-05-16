@@ -6,6 +6,7 @@
             "Environment" : "Production",
             "Test state":	"failed"
           },
+        "preference_filter" : null,
         "values":{
             "Compliance result ID": {
                 "aggfunc": "count",

@@ -50,13 +50,13 @@ class DataFilterer:
             "'False'", "False").replace("'True'", "True")
         try:
             filtered_data = current_tuple[1].query(query)
+            if filtered_data.empty:
+                logging.warning(
+                    f'After filtering, the table {current_tuple[0]} is empty, make sure all filters are correct.')
+            return filtered_data
         except pandas.errors.UndefinedVariableError as e:
             logging.error(f"Filter with {e} in the table {current_tuple[0]}.")
             exit(0)
-        if filtered_data.empty:
-            logging.warning(
-                f'After filtering, the table {current_tuple[0]} is empty, make sure all filters are correct.')
-        return filtered_data
 
     def get_filters(self):
         filters_by_filename = {}
@@ -84,27 +84,24 @@ class DataFilterer:
 
             # pivot table without the preference filter
             pivot_table = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
-                                            values_columns,filename)
+                                            values_columns, filename)
+            if self.config[filename]['preference_filter'] is None:
+                return pivot_table
+            else:  # apply the preference filter
+                filter_name = self.config[filename]['preference_filter']
+                value_name = self.config[filename]['preference_value']
+                filtered_data = filtered_data[(
+                        filtered_data[filter_name] == value_name)]
+                filtered_pivot = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
+                                                   values_columns, filename).add_prefix('Total ')
+                pivot_table = pd.concat([pivot_table, filtered_pivot], axis=1)
+                return pivot_table
         except KeyError as e:
             logging.error(f"Could not find field {e} in configuration file for table {filename}.")
             exit(0)
         except Exception as e:
             logging.error(e)
             exit(0)
-
-        # now we try to pivot with the preference filter
-        try:
-            filter_name = self.config[filename]['preference_filter']
-            value_name = self.config[filename]['preference_value']
-            filtered_data = filtered_data[(
-                    filtered_data[filter_name] == value_name)]
-            filtered_pivot = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
-                                               values_columns, filename).add_prefix('Total ')
-            pivot_table = pd.concat([pivot_table, filtered_pivot], axis=1)
-        except KeyError as e:
-            logging.warning(f"The table {filename} does not have a {e} set.")
-
-        return pivot_table
 
     @staticmethod
     def return_pivot(aggfuncs, fill_values, filtered_data, index_columns, values_columns, filename):
@@ -114,14 +111,14 @@ class DataFilterer:
                                     values=values_columns,
                                     aggfunc=aggfuncs,
                                     fill_value=fill_values)
+            if result is None:
+                logging.error(f"The settings for the {values_columns} of {filename} appear to be valid, but could not "
+                              f"generate a pivot table")
+                exit(0)
+            return result
         except TypeError:
             logging.error(f"The settings for the {values_columns} of {filename} are wrong.")
             exit(0)
-        if result is None:
-            logging.error(f"The settings for the {values_columns} of {filename} appear to be good, but could not "
-                          f"generate a pivot table")
-            exit(0)
-        return result
 
     def aggregate_pivot_tables(self):
         self.merged_table = pd.DataFrame(
