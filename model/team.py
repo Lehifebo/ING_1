@@ -2,10 +2,10 @@ import os
 import pandas as pd
 from datetime import datetime
 
-mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Get the path to the Reports directory relative to the MVPOOP directory
-hist_dir = os.path.join(mvpoop_dir, "historical_data")
+hist_dir = os.path.join(project_dir, "historical_data")
 
 
 class Team:

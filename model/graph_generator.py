@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
+project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class GraphGenerator:
     def __init__(self, teams):
@@ -18,7 +20,7 @@ class GraphGenerator:
     def create_team_graphs(self):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig("../output/" + team.team_name + "_graph.png")  # maybe pathing needs to be fixed
+            fig.savefig(os.path.join(os.path.join(project_dir, "output"),team.team_name+"graph.png"))
 
     def team_graph(self, team):
         data = team.historical_data

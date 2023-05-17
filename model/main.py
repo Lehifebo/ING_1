@@ -7,10 +7,10 @@ import email_generator as eg
 import logging
 import graph_generator as gg
 
-mvpoop_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Get the path to the Reports directory relative to the MVPOOP directory
-reports_dir = os.path.join(mvpoop_dir, "excel_data")
+reports_dir = os.path.join(project_dir, "excel_data")
 
 if __name__ == "__main__":
     reader = fr.FileReader(reports_dir)
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     email_string = email_gen.generate_emails_string()
     try:
         email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
-        email_string_path = "../output/emailStringTest.txt"  # shared folder
+        email_string_path = os.path.join(project_dir, "output/emailStringTest.txt") #shared folder
         f = open(email_string_path, "w")
         f.write(email_string)
         f.close()
