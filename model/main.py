@@ -50,7 +50,7 @@ if __name__ == "__main__":
     email_string = email_gen.generate_emails_string()
     try:
         email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
-        email_string_path = os.path.join(project_dir, "output/emailStringTest.txt") #shared folder
+        email_string_path = os.path.join(project_dir, "output/text/emailStringTest.txt") #shared folder
         f = open(email_string_path, "w")
         f.write(email_string)
         f.close()

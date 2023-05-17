@@ -20,7 +20,7 @@ class GraphGenerator:
     def create_team_graphs(self):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig(os.path.join(os.path.join(project_dir, "output"),team.team_name+"graph.png"))
+            fig.savefig(os.path.join(os.path.join(project_dir, "output/graphs"),team.team_name+"graph.png"))
 
     def team_graph(self, team):
         data = team.historical_data
