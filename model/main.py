@@ -16,23 +16,23 @@ if __name__ == "__main__":
     reader = fr.FileReader(reports_dir)
     data_tuples = reader.get_excels()
 
-    relative_path_json = '../configurations/configuration.json'
-    relative_path_template = '../configurations/template.txt'
-    relative_path_template_tribe_lead = '../configurations/tribeLeadTemplate.txt'
+    rel_path_json = '../configurations/configuration.json'
+    rel_path_template = '../configurations/template.txt'
+    rel_path_template_tribe_lead = '../configurations/tribeLeadTemplate.txt'
 
     # # Get the absolute path of the JSON file by joining the relative path with the current file's directory
 
-    absolute_path_json = os.path.join(
-        os.path.dirname(__file__), relative_path_json)
-    absolute_path_template = os.path.join(
-        os.path.dirname(__file__), relative_path_template)
-    absolute_path_template_tribe_lead = os.path.join(
-        os.path.dirname(__file__), relative_path_template_tribe_lead)
+    abs_path_json = os.path.join(
+        os.path.dirname(__file__), rel_path_json)
+    abs_path_template = os.path.join(
+        os.path.dirname(__file__), rel_path_template)
+    abs_path_template_tribe_lead = os.path.join(
+        os.path.dirname(__file__), rel_path_template_tribe_lead)
 
-    with open(absolute_path_json) as f:
+    with open(abs_path_json) as f:
         config = json.load(f)
     filterer = df.DataFilterer(config, data_tuples)
-    filterer.loop_over()
+    filterer.filter_files()
 
     teams = []
     team_dict = config['teams']
@@ -46,16 +46,16 @@ if __name__ == "__main__":
             logging.error(f"{e} is missing for team {team_names[index]}")
             exit(0)
 
-    email_gen = eg.EmailGenerator(absolute_path_template, absolute_path_template_tribe_lead, teams)
-    email_string = email_gen.generate_emails_string()
     try:
-        email_string += email_gen.overview_email(config['tribe_lead'], filterer.merged_table)
-        email_string_path = os.path.join(project_dir, "output/text/emailStringTest.txt") #shared folder
-        f = open(email_string_path, "w")
-        f.write(email_string)
-        f.close()
+        tribe_lead_email = config['tribe_lead']
+        email_gen = eg.EmailGenerator(abs_path_template, abs_path_template_tribe_lead, teams,
+                                      tribe_lead_email, filterer.merged_table)
+        email_string = email_gen.generate_output_string()
+        email_string_path = os.path.join(project_dir, "output/text/emailStringTest.txt")  # shared folder
+        email_gen.create_string_file(email_string_path, email_string)
     except KeyError as e:
-        logging.warning(f"{e} is not set.")
+        logging.warning(f"tribe_lead is not set.")
         exit(0)
+
     graph_gen = gg.GraphGenerator(teams)
     graph_gen.create_team_graphs()

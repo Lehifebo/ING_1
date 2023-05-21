@@ -12,7 +12,21 @@ class DataFilterer:
         self.pivot_tables = []
         self.merged_table = None
 
-    def loop_over(self):
+    def get_filters(self):
+        filters_by_filename = {}
+        # Loop over the filenames and retrieve the filters for each one
+        for filename in self.config["filenames"]:
+            try:
+                filters_by_filename[filename] = self.config[filename]["filters"]
+            except KeyError as e:
+                if e.args[0] == 'filters':
+                    logging.error(f"The 'filters' field is not defined for {filename} configuration")
+                    exit(0)
+                logging.error("{} does not have a configuration defined in the file.".format(e))
+                exit(0)
+        return filters_by_filename
+
+    def filter_files(self):
         for current_tuple in self.data_tuples:
             self.map_team_names(current_tuple)
             filtered_data = self.filter_data(current_tuple)
@@ -57,20 +71,6 @@ class DataFilterer:
         except pandas.errors.UndefinedVariableError as e:
             logging.error(f"Filter with {e} in the table {current_tuple[0]}.")
             exit(0)
-
-    def get_filters(self):
-        filters_by_filename = {}
-        # Loop over the filenames and retrieve the filters for each one
-        for filename in self.config["filenames"]:
-            try:
-                filters_by_filename[filename] = self.config[filename]["filters"]
-            except KeyError as e:
-                if e.args[0] == 'filters':
-                    logging.error(f"The 'filters' field is not defined for {filename} configuration")
-                    exit(0)
-                logging.error("{} does not have a configuration defined in the file.".format(e))
-                exit(0)
-        return filters_by_filename
 
     def convert_to_pivot(self, filtered_data, filename):
         try:

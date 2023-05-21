@@ -9,17 +9,38 @@ def read_template(path):
 
 
 class EmailGenerator:
-    def __init__(self, template_path, tribe_lead_template_path, team_list):
+    def __init__(self, template_path, tribe_lead_template_path, team_list, tribe_lead_email, overview):
         self.team_list = team_list
         self.template = read_template(template_path)
         self.tribe_lead_template = read_template(tribe_lead_template_path)
         self.splitInEmail = "\n\nsplitInEmail\n\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
+        self.tribe_lead_email = tribe_lead_email
+        self.overview = overview
 
-    def generate_email(self, team):
+    def generate_output_string(self):
+        final_string = self.generate_teams_string()
+        final_string += self.generate_overview_email()
+        return final_string
+
+    def generate_teams_string(self):
+        final_mail = ''
+        try:
+            for team in self.team_list:
+                team_email = self.generate_team_email(team)
+                final_mail += team_email
+                final_mail += self.split_between_mails
+        except KeyError as e:
+            logging.error('You have more/less {} than columns in table')
+            exit(0)
+        # remove the final splitBetweenEmails
+        final_mail = final_mail.rstrip(self.split_between_mails)
+        return final_mail
+
+    def generate_team_email(self, team):
         email = ''
         email += self.add_email_list(team)
-        email += self.fill_template(team)
+        email += self.fill_team_template(team)
         return email
 
     def add_email_list(self, team):
@@ -30,7 +51,7 @@ class EmailGenerator:
         email_list += self.splitInEmail
         return email_list
 
-    def fill_template(self, team):
+    def fill_team_template(self, team):
         data = []
         # match the value with the header
         pairs = zip(team.report.index, team.report.values)
@@ -40,26 +61,12 @@ class EmailGenerator:
             data.append(pair[1])  # value
         return self.template.format(*data)
 
-    def generate_emails_string(self):
-        final_mail = ''
-        try:
-            for team in self.team_list:
-                team_email = self.generate_email(team)
-                final_mail += team_email
-                final_mail += self.split_between_mails
-        except KeyError as e:
-            logging.error('You have more/less {} than columns in table')
-            exit(0)
-        # remove the final splitBetweenEmails
-        final_mail = final_mail.rstrip(self.split_between_mails)
-        return final_mail
-
-    def overview_email(self, email, overview):
+    def generate_overview_email(self):
         string = ''
         string += self.split_between_mails
-        string += email
+        string += self.tribe_lead_email
         string += self.splitInEmail
-        to_string = overview.to_string(index=False)
+        to_string = self.overview.to_string(index=False)
         print(to_string)
         try:
             string += self.tribe_lead_template.format(to_string)
@@ -67,3 +74,8 @@ class EmailGenerator:
             logging.error("The number of {} is greater than 1.")
             exit(0)
         return string
+
+    def create_string_file(self, path, string):
+        f = open(path, "w")
+        f.write(string)
+        f.close()
