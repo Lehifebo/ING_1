@@ -8,11 +8,11 @@ def read_template(path):
         return file.read()
 
 
-class EmailGenerator:
-    def __init__(self, template_path, tribe_lead_template_path, team_list, tribe_lead_email, overview):
+class StringGenerator:
+    def __init__(self, template_paths, team_list, tribe_lead_email, overview):
         self.team_list = team_list
-        self.template = read_template(template_path)
-        self.tribe_lead_template = read_template(tribe_lead_template_path)
+        self.template = read_template(template_paths[0])
+        self.tribe_lead_template = read_template(template_paths[1])
         self.splitInEmail = "\n\nsplitInEmail\n\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
         self.tribe_lead_email = tribe_lead_email

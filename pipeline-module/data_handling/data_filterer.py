@@ -10,7 +10,6 @@ class DataFilterer:
         self.data_tuples = data_tuples
         self.filters = self.get_filters()
         self.pivot_tables = []
-        self.merged_table = None
 
     def get_filters(self):
         filters_by_filename = {}
@@ -32,7 +31,7 @@ class DataFilterer:
             filtered_data = self.filter_data(current_tuple)
             self.pivot_tables.append(
                 self.convert_to_pivot(filtered_data, current_tuple[0]))
-        self.aggregate_pivot_tables()
+        return self.aggregate_pivot_tables()
 
     def map_team_names(self, current_tuple):
         try:
@@ -121,7 +120,7 @@ class DataFilterer:
             exit(0)
 
     def aggregate_pivot_tables(self):
-        self.merged_table = pd.DataFrame(
+        merged_table = pd.DataFrame(
             columns=[self.config['aggregateColumn']])
         for table in self.pivot_tables:
             try:
@@ -129,4 +128,5 @@ class DataFilterer:
                     self.merged_table, table, on=self.config['aggregateColumn'], how='outer')
             except TypeError:
                 logging.error(f"Could not merge the table {table}")
-        self.merged_table.fillna(0, inplace=True)
+        merged_table.fillna(0, inplace=True)
+        return merged_table

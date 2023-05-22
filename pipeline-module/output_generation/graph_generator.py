@@ -17,10 +17,10 @@ class GraphGenerator:
         data.set_index('Date', inplace=True)
         return data
 
-    def create_team_graphs(self):
+    def create_team_graphs(self, hist_data_path):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig(os.path.join(os.path.join(project_dir, "output/graphs"),team.team_name+"graph.png"))
+            fig.savefig(hist_data_path+team.team_name+"_graph.png")
 
     def team_graph(self, team):
         data = team.historical_data
