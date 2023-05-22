@@ -15,8 +15,7 @@ class Pipeline:
         self.graph_path = None
         self.teams = None
 
-
-    def get_files(self):
+    def get_paths(self):
         # get all the files/paths and set the fields
         print("hello")
 
@@ -26,9 +25,6 @@ class Pipeline:
         self.teams = self.data_handler.generate_teams()
 
     def end_pipeline(self):
-        output_generator = og.OutputGenerator(self.config, self.teams, self.templates_path,
-                                              self.data_handler.data, self.string_path, self.hist_data_path)
-        output_generator.generate_output()
-
-
-
+        output_generator = og.OutputGenerator(self.config, self.teams)
+        output_generator.generate_string_output(self.templates_path, self.data_handler.data, self.string_path)
+        output_generator.generate_graph_output(self.hist_data_path)

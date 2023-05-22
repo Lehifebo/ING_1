@@ -3,19 +3,18 @@ import string_generator as sg
 
 
 class OutputGenerator:
-    def __init__(self, config, teams, template_paths, data, string_path, hist_data_path):
+    def __init__(self, config, teams):
         self.config = config
         self.teams = teams
-        self.template_paths = template_paths
-        self.data = data
-        self.string_path = string_path
-        self.hist_data_path = hist_data_path
 
-    def generate_output(self):
+    def generate_string_output(self, template_paths, data, string_path):
         tribe_lead_email = self.config['tribe_lead']  # should be in try catch
-        string_generator = sg.StringGenerator(self.template_paths, self.teams, tribe_lead_email, self.data)
+        string_generator = sg.StringGenerator(template_paths, self.teams, tribe_lead_email, data)
         string = string_generator.generate_output_string()
-        string_generator.create_string_file(self.string_path, string)
+        string_generator.create_string_file(string_path, string)
 
+    def generate_graph_output(self, hist_data_path):
+        # will config need to be used here? else move config to other function
         graph_generator = gg.GraphGenerator(self.teams)
-        graph_generator.create_team_graphs(self.hist_data_path)
+        graph_generator.create_team_graphs(hist_data_path)
+        # probs create tribe lead graph somehow
