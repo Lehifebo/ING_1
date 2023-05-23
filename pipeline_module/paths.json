@@ -1,0 +1,9 @@
+{
+  "config": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/configuration.json",
+  "input": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/excel_data/",
+  "string": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/output/text/emailStringTest.txt",
+  "graph": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/output/",
+  "templates": ["C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/template.txt","C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/tribeLeadTemplate.txt"],
+  "historical": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/pipeline_module/data/historical_data/"
+
+}

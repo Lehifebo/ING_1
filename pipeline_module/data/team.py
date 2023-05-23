@@ -9,18 +9,18 @@ hist_dir = os.path.join(project_dir, "historical_data")
 
 
 class Team:
-    def __init__(self, emailing_list, report, team_name):
+    def __init__(self, emailing_list, report, team_name, hist_data_path):
         self.emailing_list = emailing_list
         self.report = report
         self.historical_data = None
         self.team_name = team_name
+        self.hist_data_path = hist_data_path
         self.path = None
 
     def add_to_history(self, report):
         append = self.team_name+"_data.csv"
-        #print(report.index)
         columns = report.index  # maybe from a config file
-        self.path = os.path.join(hist_dir, append)
+        self.path = self.hist_data_path+append
         try:
             self.historical_data = pd.read_csv(self.path)
         except FileNotFoundError:

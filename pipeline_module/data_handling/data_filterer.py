@@ -124,8 +124,8 @@ class DataFilterer:
             columns=[self.config['aggregateColumn']])
         for table in self.pivot_tables:
             try:
-                self.merged_table = pd.merge(
-                    self.merged_table, table, on=self.config['aggregateColumn'], how='outer')
+                merged_table = pd.merge(
+                    merged_table, table, on=self.config['aggregateColumn'], how='outer')
             except TypeError:
                 logging.error(f"Could not merge the table {table}")
         merged_table.fillna(0, inplace=True)
