@@ -1,9 +1,9 @@
 {
-  "config": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/configuration.json",
-  "input": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/excel_data/",
-  "string": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/output/text/emailStringTest.txt",
-  "graph": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/output/",
-  "templates": ["C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/template.txt","C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/configurations/tribeLeadTemplate.txt"],
-  "historical": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng/pipeline_module/data/historical_data/"
-
+  "config": "configurations/configuration.json",
+  "input": "excel_data/",
+  "string": "output/text/emailStringTest.txt",
+  "graph": "output/",
+  "templates": ["configurations/template.txt","configurations/tribeLeadTemplate.txt"],
+  "historical": "pipeline_module/data/historical_data/",
+  "local": "D:/GitHub/SoftEng/SoftEng/"
 }

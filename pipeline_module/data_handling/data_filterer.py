@@ -8,7 +8,7 @@ class DataFilterer:
     def __init__(self, config, data_tuples):
         self.config = config
         self.data_tuples = data_tuples
-        self.filters = self.get_filters()
+        self.filters = None
         self.pivot_tables = []
 
     def get_filters(self):
@@ -19,27 +19,29 @@ class DataFilterer:
                 filters_by_filename[filename] = self.config[filename]["filters"]
             except KeyError as e:
                 if e.args[0] == 'filters':
-                    logging.error(f"The 'filters' field is not defined for {filename} configuration")
-                    exit(0)
-                logging.error("{} does not have a configuration defined in the file.".format(e))
-                exit(0)
+                    raise (f"The 'filters' field is not defined for {filename} configuration")
+                raise ("{} does not have a configuration defined in the file.".format(e))
         return filters_by_filename
 
     def filter_files(self):
-        for current_tuple in self.data_tuples:
-            self.map_team_names(current_tuple)
-            filtered_data = self.filter_data(current_tuple)
-            self.pivot_tables.append(
-                self.convert_to_pivot(filtered_data, current_tuple[0]))
-        return self.aggregate_pivot_tables()
+        try:
+            self.filters = self.get_filters()
+            for current_tuple in self.data_tuples:
+                self.map_team_names(current_tuple)
+                filtered_data = self.filter_data(current_tuple)
+                self.pivot_tables.append(
+                    self.convert_to_pivot(filtered_data, current_tuple[0]))
+            return self.aggregate_pivot_tables()
+        except Exception as e:
+            logging.error(str(e) + "\n" + str(e.__class__))
+            exit(0)
 
     def map_team_names(self, current_tuple):
         try:
             current_tuple[1][self.config['aggregateColumn']] = current_tuple[1][self.config['aggregateColumn']].apply(
                 self.get_mapping)
-        except ValueError as e:
-            logging.error(e)
-            exit(0)
+        except Exception as e:
+            raise e
 
     def get_mapping(self, team_name):
         team_mapping = self.config['teams']
@@ -47,10 +49,9 @@ class DataFilterer:
             try:
                 if team_name in names['aliases']:
                     return team  # if the name is found, return the mapping
-            except KeyError as e:
-                logging.error(f"{e} is not defined for team {team_name}.")
-                exit(0)
-        raise ValueError("Team '" + team_name + "' has no mapping")
+            except Exception as e:
+                raise KeyError(f"{e} is not defined for team {team_name}.")
+        raise ValueError("ValueError: Team '" + team_name + "' has no mapping")
 
     def filter_data(self, current_tuple):
         current_filter = self.filters[current_tuple[0]]
@@ -67,9 +68,8 @@ class DataFilterer:
                 logging.warning(
                     f'After filtering, the table {current_tuple[0]} is empty, make sure all filters are correct.')
             return filtered_data
-        except pandas.errors.UndefinedVariableError as e:
-            logging.error(f"Filter with {e} in the table {current_tuple[0]}.")
-            exit(0)
+        except Exception as e:
+            raise pandas.errors.UndefinedVariableError (f"Filter with {e} in the table {current_tuple[0]}.")
 
     def convert_to_pivot(self, filtered_data, filename):
         try:
@@ -95,12 +95,8 @@ class DataFilterer:
                                                    values_columns, filename).add_prefix('Total ')
                 pivot_table = pd.concat([pivot_table, filtered_pivot], axis=1)
                 return pivot_table
-        except KeyError as e:
-            logging.error(f"Could not find field {e} in configuration file for table {filename}.")
-            exit(0)
         except Exception as e:
-            logging.error(e)
-            exit(0)
+            raise KeyError(f"Could not find field {e} in configuration file for table {filename}.")
 
     @staticmethod
     def return_pivot(aggfuncs, fill_values, filtered_data, index_columns, values_columns, filename):
@@ -110,14 +106,9 @@ class DataFilterer:
                                     values=values_columns,
                                     aggfunc=aggfuncs,
                                     fill_value=fill_values)
-            if result is None:
-                logging.error(f"The settings for the {values_columns} of {filename} appear to be valid, but could not "
-                              f"generate a pivot table")
-                exit(0)
             return result
-        except TypeError:
-            logging.error(f"The settings for the {values_columns} of {filename} are wrong.")
-            exit(0)
+        except Exception:
+            raise TypeError(f"The settings for the {values_columns} of {filename} are wrong.")
 
     def aggregate_pivot_tables(self):
         merged_table = pd.DataFrame(
@@ -126,7 +117,7 @@ class DataFilterer:
             try:
                 merged_table = pd.merge(
                     merged_table, table, on=self.config['aggregateColumn'], how='outer')
-            except TypeError:
-                logging.error(f"Could not merge the table {table}")
+            except Exception:
+                raise TypeError(f"Could not merge the table {table}")
         merged_table.fillna(0, inplace=True)
         return merged_table
