@@ -1,5 +1,7 @@
 import logging
 
+import pandas as pd
+
 from .data_filterer import DataFilterer
 from .file_reader import FileReader
 from pipeline_module.data.team import Team
@@ -23,7 +25,10 @@ class DataHandler:
         teams = []
         team_dict = self.config['teams']
         team_names = list(team_dict.keys())
+
+
         for index, row in self.merged_table.iterrows():
+            print(row)
             try:
                 team = Team(team_dict[row[0]]['email_list'], row, team_names[index], self.hist_data_path)
                 teams.append(team)

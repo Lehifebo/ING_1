@@ -12,7 +12,6 @@
                 "aggfunc": "count",
                 "fill_value": 1
             }
-
           }
     },
     "VmDCs" : {

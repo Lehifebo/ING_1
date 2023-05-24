@@ -5,5 +5,5 @@
   "graph": "/output/",
   "templates": ["/configurations/template.txt","/configurations/tribeLeadTemplate.txt"],
   "historical": "/pipeline_module/data/historical_data/",
-  "local": "C:/Users/peluc/OneDrive/Documenti/GRONINGEN22-23/BLOCK2/Soft Eng/SoftEng"
+  "local": "D:\\GitHub\\SoftEng\\SoftEng"
 }
