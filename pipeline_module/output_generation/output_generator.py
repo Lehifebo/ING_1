@@ -13,8 +13,9 @@ class OutputGenerator:
         string = string_generator.generate_output_string()
         string_generator.create_string_file(string_path, string)
 
-    def generate_graph_output(self, hist_data_path):
+    def generate_graph_output(self, graph_path):
         # will config need to be used here? else move config to other function
         graph_generator = GraphGenerator(self.teams)
-        graph_generator.create_team_graphs(hist_data_path)
+        graph_generator.tribe_lead_graph(self.config["sum_columns"])
+        #graph_generator.create_team_graphs(graph_path)
         # probs create tribe lead graph somehow

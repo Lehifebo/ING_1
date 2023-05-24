@@ -75,6 +75,7 @@
             "email_list":["email1","email2"]
         }
     },
-    "tribe_lead": "emailTribeLead"
+    "tribe_lead": "emailTribeLead",
+    "sum_columns": ["Total Vulnerability ID","Compliance result ID"]
 
 }

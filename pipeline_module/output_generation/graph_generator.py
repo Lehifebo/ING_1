@@ -4,6 +4,7 @@ import os
 
 project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 class GraphGenerator:
     def __init__(self, teams):
         self.teams = teams
@@ -20,7 +21,7 @@ class GraphGenerator:
     def create_team_graphs(self, graph_path):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig(graph_path+team.team_name+"_graph.png")
+            fig.savefig(graph_path + team.team_name + "_graph.png")
 
     def team_graph(self, team):
         data = team.historical_data
@@ -37,6 +38,27 @@ class GraphGenerator:
         ax.set_xlabel('Date')
         ax.set_ylabel('Count')
         return fig
+
+    def tribe_lead_graph(self, sum_columns):
+        datasets = self.get_data_tuple()
+        for config, data in datasets:
+            sum_values = data[sum_columns].sum(axis=1)
+            plt.plot(sum_values, label=config)
+        plt.xlabel('Date')
+        plt.ylabel("Sum of values")
+        plt.legend()
+
+        # show the graph
+        plt.show()
+
+    def get_data_tuple(self):
+        datasets = []
+        for team in self.teams:
+            config_name = team.team_name
+            historical_data = team.historical_data
+            historical_data = self.fix_date(historical_data)
+            datasets.append((config_name, historical_data))
+        return datasets
 
     def get_data_tuples(self):
         datasets = []
