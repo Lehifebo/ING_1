@@ -31,7 +31,6 @@ class DataFilterer:
                 filtered_data = self.filter_data(current_tuple)
                 self.pivot_tables.append(
                     self.convert_to_pivot(filtered_data, current_tuple[0]))
-                print(len(self.pivot_tables))
             return self.aggregate_pivot_tables()
         except Exception as e:
             logging.error(str(e) + "\n" + str(e.__class__))
@@ -75,7 +74,6 @@ class DataFilterer:
     def convert_to_pivot(self, filtered_data, filename):
         try:
             index_columns = [self.config['aggregateColumn']]
-            index_columns.append("Application name")
             values_columns = list(self.config[filename]['values'].keys())
             aggfuncs = {}
             fill_values = {}
@@ -89,7 +87,6 @@ class DataFilterer:
             if self.config[filename]['preference_filter'] is None:
                 return pivot_table
             else:  # apply the preference filter
-                pivot_table=pivot_table.add_prefix(self.config[filename]['preference_value']+" ")
                 filter_name = self.config[filename]['preference_filter']
                 value_name = self.config[filename]['preference_value']
                 filtered_data = filtered_data[(
@@ -115,19 +112,11 @@ class DataFilterer:
 
     def aggregate_pivot_tables(self):
         merged_table = pd.DataFrame(
-            columns=[self.config['aggregateColumn'], "Application name"])
-        print("test")
-        pd.set_option("display.max_columns",None)
-        print(len(self.pivot_tables))
-        merged_table = pd.concat([self.pivot_tables[0], self.pivot_tables[1]], axis=1)
-        merged_table.to_csv("test")
-        print(merged_table)
-        quit()
+            columns=[self.config['aggregateColumn']])
         for table in self.pivot_tables:
             try:
-                merged_table = pd.concat([existing_pivot_table, additional_table], axis=1)
-                #merged_table = pd.merge(
-                    #merged_table, table, on=self.config['aggregateColumn'], how='outer')
+                merged_table = pd.merge(
+                    merged_table, table, on=self.config['aggregateColumn'], how='outer')
             except Exception:
                 raise TypeError(f"Could not merge the table {table}")
         merged_table.fillna(0, inplace=True)
