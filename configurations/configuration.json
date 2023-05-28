@@ -76,6 +76,6 @@
         }
     },
     "tribe_lead": "emailTribeLead",
-    "sum_columns": ["Total Vulnerability ID","Compliance result ID"]
+    "issue_columns": ["Total Vulnerability ID","Compliance result ID"]
 
 }

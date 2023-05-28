@@ -6,8 +6,9 @@ project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class GraphGenerator:
-    def __init__(self, teams):
+    def __init__(self, teams,graph_path):
         self.teams = teams
+        self.graph_path = graph_path
 
     @staticmethod
     def fix_date(data):
@@ -18,10 +19,10 @@ class GraphGenerator:
         data.set_index('Date', inplace=True)
         return data
 
-    def create_team_graphs(self, graph_path):
+    def create_team_graphs(self):
         for team in self.teams:
             fig = self.team_graph(team)
-            fig.savefig(graph_path + team.team_name + "_graph.png")
+            fig.savefig(self.graph_path + team.team_name + "_graph.png")
 
     def team_graph(self, team):
         data = team.historical_data
@@ -39,10 +40,15 @@ class GraphGenerator:
         ax.set_ylabel('Count')
         return fig
 
-    def tribe_lead_graph(self, sum_columns):
+    def create_tribe_lead_graphs(self, issues):
+        for issue in issues:
+            fig = self.issue_graph(issue)
+            fig.savefig(self.graph_path + issue+"_graph.png")
+    def tribe_lead_graph(self, issue):
+
         datasets = self.get_data_tuple()
         for config, data in datasets:
-            sum_values = data[sum_columns].sum(axis=1)
+            sum_values = data["s"].sum(axis=1)
             plt.plot(sum_values, label=config)
         plt.xlabel('Date')
         plt.ylabel("Sum of values")
@@ -60,28 +66,17 @@ class GraphGenerator:
             datasets.append((config_name, historical_data))
         return datasets
 
-    def get_data_tuples(self):
-        datasets = []
-        for x in range(1, 11):
-            config_name = "Config{:04d}".format(x)
-            historical_data = pd.read_csv("../historical_data/" + config_name + "_data.csv")
-            historical_data = self.fix_date(historical_data)
-            datasets.append((config_name, historical_data))
-        return datasets
-
-    def issue_graph(self, issue):
-        # issue = 'Vulnerability ID'
-        datasets = self.get_data_tuples()
-        for config, data in datasets:
+    def issue_graph(self,issue):
+        fig, ax = plt.subplots()
+        for team in self.teams:
             # plot the 'y' column from both dataframes on the same graph
-            plt.plot(data[issue], label=config)
+            ax.plot(team.historical_data[issue],  label=team.team_name)
             # add labels and legend
-        plt.xlabel('Date')
-        plt.ylabel(issue)
-        plt.legend()
+        ax.set_xlabel('Date')
+        ax.set_ylabel(issue)
+        ax.legend()
+        return fig
 
-        # show the graph
-        plt.show()
 
     def everything_graphs(self):
         datasets = self.get_data_tuples()
