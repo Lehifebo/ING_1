@@ -233,3 +233,37 @@ Columns: [Vulnerability ID]
 Index: []
 
 Best regard
+splitBetweenEmails
+emailTribeLead
+
+splitInEmail
+
+Hello,
+
+This week performance of the teams:
+
+TscmDCs
+  CI Config Admin Group  Compliance result ID
+0                   All                  1252
+1            Config0001                   142
+2            Config0003                     9
+3            Config0004                    16
+4            Config0006                     6
+5            Config0007                     4
+6            Config0008                   324
+7            Config0009                    84
+8            Config0010                    37
+9            Config0011                     4
+
+VmDCs
+  CI Config Admin Group  Vulnerability ID
+0                   All               122
+1            Config0001                12
+2            Config0002                 9
+3            Config0003                12
+4            Config0004                 8
+5            Config0005                13
+6            Config0009                 1
+7            Config0010                 6
+
+Best regards

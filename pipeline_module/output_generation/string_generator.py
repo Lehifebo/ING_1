@@ -20,8 +20,7 @@ class StringGenerator:
 
     def generate_output_string(self):
         final_string = self.generate_teams_string()
-
-        #final_string += self.generate_overview_email()
+        final_string += self.generate_overview_email()
         return final_string
 
     def generate_teams_string(self):
@@ -67,18 +66,36 @@ class StringGenerator:
         return self.template.format(*data)
 
     def generate_overview_email(self):
+
         string = ''
         string += self.split_between_mails
         string += self.tribe_lead_email
         string += self.splitInEmail
-        to_string = self.overview.to_string(index=False)
-        print(to_string)
+        final_tables = self.filter_overview()
+        #to_string = self.overview.to_string(index=False)
+        #print(to_string)
         try:
-            string += self.tribe_lead_template.format(to_string)
+            string += self.tribe_lead_template.format(*final_tables)
         except IndexError:
             logging.error("The number of {} is greater than 1.")
             exit(0)
         return string
+
+    def filter_overview(self):
+        final_data = []
+        for (name,table) in self.overview:
+            final_data.append(name)
+            columns = list(table.columns)
+            # Group the table by 'CI Config Admin Group' and calculate the sum of 'Compliance result ID'
+            compressed_table = table.groupby('CI Config Admin Group')[columns].sum()
+
+            # Add the 'All' row with the total sum
+            compressed_table.loc['All'] = compressed_table.sum()
+
+            # Reset the index to have 'CI Config Admin Group' as a column
+            compressed_table = compressed_table.reset_index()
+            final_data.append(compressed_table)
+        return final_data
 
     def create_string_file(self, path, string):
         f = open(path, "w")

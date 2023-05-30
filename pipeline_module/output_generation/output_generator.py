@@ -7,9 +7,9 @@ class OutputGenerator:
         self.config = config
         self.teams = teams
 
-    def generate_string_output(self, template_paths, data, string_path):
+    def generate_string_output(self, template_paths, data_tuples, string_path):
         tribe_lead_email = self.config['tribe_lead']  # should be in try catch
-        string_generator = StringGenerator(template_paths, self.teams, tribe_lead_email, data)
+        string_generator = StringGenerator(template_paths, self.teams, tribe_lead_email, data_tuples)
         string = string_generator.generate_output_string()
         string_generator.create_string_file(string_path, string)
 
