@@ -38,7 +38,7 @@ class Pipeline:
 
     def generate_output(self):
         output_generator = og.OutputGenerator(self.config, self.teams)
-        output_generator.generate_string_output(self.templates_path, self.data_handler.merged_table, self.string_path)
+        output_generator.generate_string_output(self.templates_path, self.data_handler.pivot_tables, self.string_path)
         output_generator.generate_graph_output(self.graph_path)
 
     def remove_files(self):

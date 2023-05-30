@@ -20,7 +20,8 @@ class StringGenerator:
 
     def generate_output_string(self):
         final_string = self.generate_teams_string()
-        final_string += self.generate_overview_email()
+
+        #final_string += self.generate_overview_email()
         return final_string
 
     def generate_teams_string(self):
@@ -53,12 +54,16 @@ class StringGenerator:
 
     def fill_team_template(self, team):
         data = []
-        # match the value with the header
-        pairs = zip(team.report.index, team.report.values)
-        data.append(next(pairs)[1])  # skip the name
-        for pair in pairs:
-            data.append(pair[0])  # header
-            data.append(pair[1])  # value
+        data.append(team.team_name)
+        for (file, report) in team.report:
+            data.append(file)
+            data.append(report.to_string())
+        # # match the value with the header
+        # pairs = zip(team.report.index, team.report.values)
+        # data.append(next(pairs)[1])  # skip the name
+        # for pair in pairs:
+        #     data.append(pair[0])  # header
+        #     data.append(pair[1])  # value
         return self.template.format(*data)
 
     def generate_overview_email(self):

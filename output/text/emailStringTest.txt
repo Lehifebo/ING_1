@@ -6,139 +6,17 @@ Hello Config0001,
 
 This week score:
 
-Compliance result ID:
-You have 142.0
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0001            [Application0001] High                        19
+                                        Low                        121
+                                        Medium                       2
 
-Vulnerability ID:
-You have 20.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0003,
-
-This week score:
-
-Compliance result ID:
-You have 9.0
-
-Vulnerability ID:
-You have 83.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0004,
-
-This week score:
-
-Compliance result ID:
-You have 16.0
-
-Vulnerability ID:
-You have 18.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0006,
-
-This week score:
-
-Compliance result ID:
-You have 6.0
-
-Vulnerability ID:
-You have 9.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0007,
-
-This week score:
-
-Compliance result ID:
-You have 4.0
-
-Vulnerability ID:
-You have 0.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0008,
-
-This week score:
-
-Compliance result ID:
-You have 324.0
-
-Vulnerability ID:
-You have 111.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0009,
-
-This week score:
-
-Compliance result ID:
-You have 84.0
-
-Vulnerability ID:
-You have 84.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0010,
-
-This week score:
-
-Compliance result ID:
-You have 37.0
-
-Vulnerability ID:
-You have 34.0
-
-Best regards
-splitBetweenEmails
-email1,email2
-
-splitInEmail
-
-Hello Config0011,
-
-This week score:
-
-Compliance result ID:
-You have 4.0
-
-Vulnerability ID:
-You have 0.0
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0001            [Appl001]        Medium                             12
 
 Best regards
 splitBetweenEmails
@@ -150,11 +28,61 @@ Hello Config0002,
 
 This week score:
 
-Compliance result ID:
-You have 0.0
+TscmDCs results:
+Empty DataFrame
+Columns: [Compliance result ID]
+Index: []
 
-Vulnerability ID:
-You have 64.0
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0002            [Appl002]        High                                8
+                                       Medium                              1
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0003,
+
+This week score:
+
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0003            [Application0003] High                         1
+                                        Low                          8
+
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0003            [Appl003]        Critical                            2
+                                       High                                7
+                                       Medium                              3
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0004,
+
+This week score:
+
+TscmDCs results:
+                                                                   Compliance result ID
+CI Config Admin Group Application name                   Severity                      
+Config0004            [Application0004]                  Low                          7
+                      [Application0005, Application0004] Low                          9
+
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0004            [Appl004]        High                                4
+                                       Low                                 4
 
 Best regards
 splitBetweenEmails
@@ -166,33 +94,142 @@ Hello Config0005,
 
 This week score:
 
-Compliance result ID:
-You have 0.0
+TscmDCs results:
+Empty DataFrame
+Columns: [Compliance result ID]
+Index: []
 
-Vulnerability ID:
-You have 45.0
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0005            [Appl005]        High                                1
+                                       Low                                 6
+                                       Medium                              6
 
-Best regard
+Best regards
 splitBetweenEmails
-emailTribeLead
+email1,email2
 
 splitInEmail
 
-Hello,
+Hello Config0006,
 
-This week performance of the teams:
+This week score:
 
-CI Config Admin Group  Compliance result ID  Vulnerability ID  Total Vulnerability ID
-           Config0001                 142.0              20.0                    12.0
-           Config0003                   9.0              83.0                    12.0
-           Config0004                  16.0              18.0                     8.0
-           Config0006                   6.0               9.0                     0.0
-           Config0007                   4.0               0.0                     0.0
-           Config0008                 324.0             111.0                     0.0
-           Config0009                  84.0              84.0                     1.0
-           Config0010                  37.0              34.0                     6.0
-           Config0011                   4.0               0.0                     0.0
-           Config0002                   0.0              64.0                     9.0
-           Config0005                   0.0              45.0                    13.0
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0006            [Application0011] Low                          6
+
+VmDCs results:
+Empty DataFrame
+Columns: [Vulnerability ID]
+Index: []
 
 Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0007,
+
+This week score:
+
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0007            [Application0009] High                         2
+                                        Low                          2
+
+VmDCs results:
+Empty DataFrame
+Columns: [Vulnerability ID]
+Index: []
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0008,
+
+This week score:
+
+TscmDCs results:
+                                                      Compliance result ID
+CI Config Admin Group Application name      Severity                      
+Config0008            [Application0006_[P]] High                        36
+                                            Low                        288
+
+VmDCs results:
+Empty DataFrame
+Columns: [Vulnerability ID]
+Index: []
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0009,
+
+This week score:
+
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0009            [Application0007] High                        77
+                                        Medium                       7
+
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0009            [Appl009]        High                                1
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0010,
+
+This week score:
+
+TscmDCs results:
+                                                  Compliance result ID
+CI Config Admin Group Application name  Severity                      
+Config0010            [Application0008] High                        13
+                                        Low                         16
+                                        Medium                       8
+
+VmDCs results:
+                                                            Vulnerability ID
+CI Config Admin Group Application name Nessus threat level                  
+Config0010            [Appl010]        Low                                 3
+                                       Medium                              3
+
+Best regards
+splitBetweenEmails
+email1,email2
+
+splitInEmail
+
+Hello Config0011,
+
+This week score:
+
+TscmDCs results:
+                                                    Compliance result ID
+CI Config Admin Group Application name    Severity                      
+Config0011            [Application0010-P] Medium                       4
+
+VmDCs results:
+Empty DataFrame
+Columns: [Vulnerability ID]
+Index: []
+
+Best regard

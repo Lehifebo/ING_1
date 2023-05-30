@@ -30,7 +30,8 @@ class GraphGenerator:
         columns = data.columns.to_list()
         # Create a figure and axis object
         fig, ax = plt.subplots()
-        issues = columns[1:]
+        columns.pop()
+        issues = columns
         for issue in issues:
             data[issue].plot(ax=ax, label=issue)
         # Set the title, legend, and axis labels
@@ -43,7 +44,7 @@ class GraphGenerator:
     def create_tribe_lead_graphs(self, issues):
         for issue in issues:
             fig = self.issue_graph(issue)
-            fig.savefig(self.graph_path + issue+"_graph.png")
+            fig.savefig(self.graph_path + "tl_"+issue+"_graph.png")
     def tribe_lead_graph(self, issue):
 
         datasets = self.get_data_tuple()

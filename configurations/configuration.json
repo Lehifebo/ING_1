@@ -6,7 +6,8 @@
             "Environment" : "Production",
             "Test state":	"failed"
           },
-        "preference_filter" : null,
+        "rows":["CI Config Admin Group","Application name","Severity"],
+        "columns": ["Age range"],
         "values":{
             "Compliance result ID": {
                 "aggfunc": "count",
@@ -18,10 +19,11 @@
     "VmDCs" : {
         "filters":{
             "Environment": "Production",
-            "Is Waived"	: "False"
+            "Is Waived"	: "False",
+            "Advisory overdue" : "Overdue"
           },
-        "preference_filter" : "Advisory overdue",
-        "preference_value" : "Overdue",
+        "rows":["CI Config Admin Group","Application name","Nessus threat level"],
+        "columns": null,
         "values":{
         "Vulnerability ID": {
                 "aggfunc": "count",
@@ -76,6 +78,6 @@
         }
     },
     "tribe_lead": "emailTribeLead",
-    "issue_columns": ["Total Vulnerability ID","Compliance result ID"]
+    "issue_columns": ["Vulnerability ID","Compliance result ID"]
 
 }

@@ -2,10 +2,10 @@ Hello {},
 
 This week score:
 
-{}:
-You have {}
+{} results:
+{}
 
-{}:
-You have {}
+{} results:
+{}
 
 Best regards
