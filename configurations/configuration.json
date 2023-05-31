@@ -1,6 +1,6 @@
 {
     "aggregateColumn": "CI Config Admin Group",
-    "filenames" :["TscmDCs","VmDCs"],
+    "filenames" :["TscmDCs","VmDCs","DQI"],
     "TscmDCs" : {
         "filters":{
             "Environment" : "Production",
@@ -9,7 +9,7 @@
         "rows":["CI Config Admin Group","Application name","Severity"],
         "columns": ["Age range"],
         "values":{
-            "Compliance result ID": {
+            "Asset owner": {
                 "aggfunc": "count",
                 "fill_value": 1
             }
@@ -31,53 +31,67 @@
             }
         }
     },
+    "DQI": {
+        "filters":{
+            "IT Custodian" : "Rein Heddema",
+            "Issue Overdue": "Yes"
+        },
+        "rows":["CI Config Admin Group","Issue Type"],
+        "columns": null,
+        "values":{
+        "Issue Overdue": {
+                "aggfunc": "count",
+                "fill_value": 1
+            }
+        }
+    },
     "teams":{
-        "Config0001":{
-            "aliases":["Config0001","Config001"],
+        "Guardians":{
+            "aliases":["Config0001","Config001","be+nl/CoE Document & Content Services BE/Deliver Your Message/Guardians","T00539 - DocumentumLWD"],
             "email_list":["email1","email2"]
         },
-        "Config0002":{
-            "aliases":["Config0002","Config002"],
+        "Base":{
+            "aliases":["Config0002","Config002","be+nl/Document & Content Services NL/Communication as a Service/Base","T00609 - E-motion"],
             "email_list":["email1","email2"]
         },
-        "Config0003":{
-            "aliases":["Config0003","Config003"],
+        "Paper & Send":{
+            "aliases":["Config0003","Config003","be+nl/Document & Content Services NL/Communication as a Service/Paper & Send","T01333 - Paper & Send"],
             "email_list":["email1","email2"]
         },
-        "Config0004":{
-            "aliases":["Config0004","Config004"],
+        "Custodian":{
+            "aliases":["Config0004","Config004","be+nl/Document & Content Services NL/Content Interaction/Custodian","T00977 - InfoArchive"],
             "email_list":["email1","email2"]
         },
-        "Config0005":{
-            "aliases":["Config0005","Config005"],
+        "DQ & R":{
+            "aliases":["Config0005","Config005","be+nl/Document & Content Services NL/Content Interaction/Data Quality &Retention","T02347 - DataQuality and Retention"],
             "email_list":["email1","email2"]
         },
-        "Config0006":{
-            "aliases":["Config0006","Config006"],
+        "Superflow":{
+            "aliases":["Config0006","Config006","be+nl/Document & Content Services NL/Content Interaction/Superflow","T01332 - Pandoralytics","T01594 - Superflow"],
             "email_list":["email1","email2"]
         },
-        "Config0007":{
-            "aliases":["Config0007","Config007"],
+        "Blanco":{
+            "aliases":["Config0007","Config007","be+nl/Document & Content Services NL/Content Processing/Blanco - 3MO","T00277 - Blanco-3MO"],
             "email_list":["email1","email2"]
         },
-        "Config0008":{
-            "aliases":["Config0008","Config008"],
+        "Hclix":{
+            "aliases":["Config0008","Config008","be+nl/Document & Content Services NL/Content Processing/Hclix","T08399 - Hclix"],
             "email_list":["email1","email2"]
         },
-        "Config0009":{
-            "aliases":["Config0009","Config009"],
+        "Obelix":{
+            "aliases":["Config0009","Config009","be+nl/Document & Content Services NL/Content Processing/Obelix","T00276 - Obelix","T00163 - BE-DCS-Sailors"],
             "email_list":["email1","email2"]
         },
-        "Config0010":{
-            "aliases":["Config0010","Config010"],
+        "CapCom":{
+            "aliases":["Config0010","Config010","T05776 - CapCom"],
             "email_list":["email1","email2"]
         },
-        "Config0011":{
-            "aliases":["Config0011","Config011"],
+        "Chapter Content Delivery":{
+            "aliases":["Config0011","Config011","T07716 - Chapter Content Delivery"],
             "email_list":["email1","email2"]
         }
     },
     "tribe_lead": "emailTribeLead",
-    "issue_columns": ["Vulnerability ID","Compliance result ID"]
+    "issue_columns": ["Vulnerability ID", "Asset owner", "Issue Overdue"]
 
 }

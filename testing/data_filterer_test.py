@@ -90,7 +90,6 @@ class TestDataFilterer(unittest.TestCase):
         # Create a DataFilterer instance and call the get_filters method
         filterer = df.DataFilterer(config, [(0, data)])
         filterer.get_filters()
-        print((0, data))
 
         # Call the filter_data method to filter the data
         filtered_data = filterer.filter_data((0, data))

@@ -24,18 +24,18 @@ class DataFilterer:
         return filters_by_filename
 
     def filter_files(self):
-        try:
-            self.filters = self.get_filters()
-            for current_tuple in self.data_tuples:
-                self.map_team_names(current_tuple)
-                filtered_data = self.filter_data(current_tuple)
-                self.pivot_tables.append(
-                    self.convert_to_pivot(filtered_data, current_tuple[0]))
-            return self.pivot_tables
+        # try:
+        self.filters = self.get_filters()
+        for current_tuple in self.data_tuples:
+            self.map_team_names(current_tuple)
+            filtered_data = self.filter_data(current_tuple)
+            self.pivot_tables.append(
+                self.convert_to_pivot(filtered_data, current_tuple[0]))
+        return self.pivot_tables
             #return self.aggregate_pivot_tables()
-        except Exception as e:
-            logging.error(str(e) + "\n" + str(e.__class__))
-            exit(0)
+        # except Exception as e:
+        #     logging.error(str(e) + "\n" + str(e.__class__))
+        #     exit(0)
 
     def map_team_names(self, current_tuple):
         try:

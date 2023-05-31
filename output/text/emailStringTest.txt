@@ -2,21 +2,25 @@ email1,email2
 
 splitInEmail
 
-Hello Config0001,
+Hello Guardians,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0001            [Application0001] High                        19
-                                        Low                        121
-                                        Medium                       2
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Guardians             Error                   8
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0001            [Appl001]        Medium                             12
+Guardians             [Appl001]        Medium                             12
 
 Best regards
 splitBetweenEmails
@@ -24,19 +28,27 @@ email1,email2
 
 splitInEmail
 
-Hello Config0002,
+Hello Base,
 
 This week score:
 
-TscmDCs results:
-Empty DataFrame
-Columns: [Compliance result ID]
-Index: []
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Base                  Error                  26
+                      Warning                 1
 
+TscmDCs results:
+                                                 Asset owner
+CI Config Admin Group Application name Severity             
+Base                  [CX_INSPIRE-P]   High                8
+                                       Low                65
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0002            [Appl002]        High                                8
+Base                  [Appl002]        High                                8
                                        Medium                              1
 
 Best regards
@@ -45,20 +57,25 @@ email1,email2
 
 splitInEmail
 
-Hello Config0003,
+Hello Paper & Send,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0003            [Application0003] High                         1
-                                        Low                          8
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Paper & Send          Warning                 4
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0003            [Appl003]        Critical                            2
+Paper & Send          [Appl003]        Critical                            2
                                        High                                7
                                        Medium                              3
 
@@ -68,20 +85,26 @@ email1,email2
 
 splitInEmail
 
-Hello Config0004,
+Hello Custodian,
 
 This week score:
 
-TscmDCs results:
-                                                                   Compliance result ID
-CI Config Admin Group Application name                   Severity                      
-Config0004            [Application0004]                  Low                          7
-                      [Application0005, Application0004] Low                          9
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Custodian             Warning                 9
 
+TscmDCs results:
+                                                  Asset owner
+CI Config Admin Group Application name  Severity             
+Custodian             [InfoArchive_[P]] High               27
+                                        Low               119
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0004            [Appl004]        High                                4
+Custodian             [Appl004]        High                                4
                                        Low                                 4
 
 Best regards
@@ -90,19 +113,26 @@ email1,email2
 
 splitInEmail
 
-Hello Config0005,
+Hello DQ & R,
 
 This week score:
 
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+DQ & R                Error                   6
+                      Warning                 3
+
 TscmDCs results:
 Empty DataFrame
-Columns: [Compliance result ID]
+Columns: [Asset owner]
 Index: []
 
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0005            [Appl005]        High                                1
+DQ & R                [Appl005]        High                                1
                                        Low                                 6
                                        Medium                              6
 
@@ -112,15 +142,21 @@ email1,email2
 
 splitInEmail
 
-Hello Config0006,
+Hello Superflow,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0006            [Application0011] Low                          6
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Superflow             Warning                10
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
 Empty DataFrame
 Columns: [Vulnerability ID]
@@ -132,16 +168,21 @@ email1,email2
 
 splitInEmail
 
-Hello Config0007,
+Hello Blanco,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0007            [Application0009] High                         2
-                                        Low                          2
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Blanco                Error                   2
 
+TscmDCs results:
+                                                       Asset owner
+CI Config Admin Group Application name       Severity             
+Blanco                [MessageOrchestration] Low                10
+
+Make sure that the issues are all overdue.
 VmDCs results:
 Empty DataFrame
 Columns: [Vulnerability ID]
@@ -153,16 +194,21 @@ email1,email2
 
 splitInEmail
 
-Hello Config0008,
+Hello Hclix,
 
 This week score:
 
-TscmDCs results:
-                                                      Compliance result ID
-CI Config Admin Group Application name      Severity                      
-Config0008            [Application0006_[P]] High                        36
-                                            Low                        288
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Hclix                 Error                   5
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
 Empty DataFrame
 Columns: [Vulnerability ID]
@@ -174,20 +220,26 @@ email1,email2
 
 splitInEmail
 
-Hello Config0009,
+Hello Obelix,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0009            [Application0007] High                        77
-                                        Medium                       7
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+Obelix                Warning                22
 
+TscmDCs results:
+                                                        Asset owner
+CI Config Admin Group Application name        Severity             
+Obelix                [Global Inbox Services] High                9
+                      [SCI]                   Low                 7
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0009            [Appl009]        High                                1
+Obelix                [Appl009]        High                                1
 
 Best regards
 splitBetweenEmails
@@ -195,21 +247,25 @@ email1,email2
 
 splitInEmail
 
-Hello Config0010,
+Hello CapCom,
 
 This week score:
 
-TscmDCs results:
-                                                  Compliance result ID
-CI Config Admin Group Application name  Severity                      
-Config0010            [Application0008] High                        13
-                                        Low                         16
-                                        Medium                       8
+DQI results:
+                                  Issue Overdue
+CI Config Admin Group Issue Type               
+CapCom                Error                   8
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
                                                             Vulnerability ID
 CI Config Admin Group Application name Nessus threat level                  
-Config0010            [Appl010]        Low                                 3
+CapCom                [Appl010]        Low                                 3
                                        Medium                              3
 
 Best regards
@@ -218,15 +274,21 @@ email1,email2
 
 splitInEmail
 
-Hello Config0011,
+Hello Chapter Content Delivery,
 
 This week score:
 
-TscmDCs results:
-                                                    Compliance result ID
-CI Config Admin Group Application name    Severity                      
-Config0011            [Application0010-P] Medium                       4
+DQI results:
+                                     Issue Overdue
+CI Config Admin Group    Issue Type               
+Chapter Content Delivery Error                   6
 
+TscmDCs results:
+Empty DataFrame
+Columns: [Asset owner]
+Index: []
+
+Make sure that the issues are all overdue.
 VmDCs results:
 Empty DataFrame
 Columns: [Vulnerability ID]
@@ -242,28 +304,38 @@ Hello,
 
 This week performance of the teams:
 
+DQI
+       CI Config Admin Group  Issue Overdue
+0                        All            220
+1                       Base             27
+2                     Blanco              2
+3                     CapCom              8
+4   Chapter Content Delivery              6
+5                  Custodian              9
+6                     DQ & R              9
+7                  Guardians              8
+8                      Hclix              5
+9                     Obelix             22
+10              Paper & Send              4
+11                 Superflow             10
+
 TscmDCs
-  CI Config Admin Group  Compliance result ID
-0                   All                  1252
-1            Config0001                   142
-2            Config0003                     9
-3            Config0004                    16
-4            Config0006                     6
-5            Config0007                     4
-6            Config0008                   324
-7            Config0009                    84
-8            Config0010                    37
-9            Config0011                     4
+  CI Config Admin Group  Asset owner
+0                   All          490
+1                  Base           73
+2                Blanco           10
+3             Custodian          146
+4                Obelix           16
 
 VmDCs
   CI Config Admin Group  Vulnerability ID
 0                   All               122
-1            Config0001                12
-2            Config0002                 9
-3            Config0003                12
-4            Config0004                 8
-5            Config0005                13
-6            Config0009                 1
-7            Config0010                 6
+1                  Base                 9
+2                CapCom                 6
+3             Custodian                 8
+4                DQ & R                13
+5             Guardians                12
+6                Obelix                 1
+7          Paper & Send                12
 
 Best regards

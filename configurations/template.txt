@@ -8,4 +8,8 @@ This week score:
 {} results:
 {}
 
+Make sure that the issues are all overdue.
+{} results:
+{}
+
 Best regards
