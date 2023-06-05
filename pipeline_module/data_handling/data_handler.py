@@ -1,5 +1,3 @@
-import logging
-
 from .data_filterer import DataFilterer
 from .file_reader import FileReader
 from pipeline_module.data.team import Team

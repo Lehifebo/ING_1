@@ -38,11 +38,14 @@ class DataFilterer:
         #     exit(0)
 
     def map_team_names(self, current_tuple):
-        try:
-            current_tuple[1][self.config['aggregateColumn']] = current_tuple[1][self.config['aggregateColumn']].apply(
-                self.get_mapping)
-        except Exception as e:
-            raise e
+        aggregate_column = self.config['aggregateColumn']
+        if aggregate_column in current_tuple[1]:
+            try:
+                current_tuple[1][aggregate_column] = current_tuple[1][aggregate_column].apply(self.get_mapping)
+            except Exception as e:
+                raise e
+        else:
+            raise KeyError(f"Column '{aggregate_column}' does not exist in the DataFrame.")
 
     def get_mapping(self, team_name):
         team_mapping = self.config['teams']
