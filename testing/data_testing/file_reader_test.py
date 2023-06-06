@@ -6,8 +6,9 @@ from pipeline_module.data_handling.file_reader import FileReader
 
 
 class TestFileReader(unittest.TestCase):
+
     def setUp(self):
-        self.file_reader = FileReader('T:\\Git\\SoftEng\\testing\\test_files\\')
+        self.file_reader = FileReader('../test_files/')
 
     def test_get_excels_with_existing_path(self):
         expected_result = [

@@ -18,6 +18,7 @@ class StringGenerator:
         self.tribe_lead_email = tribe_lead_email
         self.overview = overview
 
+
     def generate_output_string(self):
         final_string = self.generate_teams_string()
         final_string += self.generate_overview_email()
@@ -57,12 +58,6 @@ class StringGenerator:
         for (file, report) in team.report:
             data.append(file)
             data.append(report.to_string())
-        # # match the value with the header
-        # pairs = zip(team.report.index, team.report.values)
-        # data.append(next(pairs)[1])  # skip the name
-        # for pair in pairs:
-        #     data.append(pair[0])  # header
-        #     data.append(pair[1])  # value
         return self.template.format(*data)
 
     def generate_overview_email(self):
@@ -72,8 +67,6 @@ class StringGenerator:
         string += self.tribe_lead_email
         string += self.splitInEmail
         final_tables = self.filter_overview()
-        #to_string = self.overview.to_string(index=False)
-        #print(to_string)
         try:
             string += self.tribe_lead_template.format(*final_tables)
         except IndexError:

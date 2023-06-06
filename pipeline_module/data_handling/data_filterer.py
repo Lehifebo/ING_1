@@ -32,10 +32,7 @@ class DataFilterer:
             self.pivot_tables.append(
                 self.convert_to_pivot(filtered_data, current_tuple[0]))
         return self.pivot_tables
-            #return self.aggregate_pivot_tables()
-        # except Exception as e:
-        #     logging.error(str(e) + "\n" + str(e.__class__))
-        #     exit(0)
+
 
     def map_team_names(self, current_tuple):
         aggregate_column = self.config['aggregateColumn']
@@ -90,18 +87,6 @@ class DataFilterer:
             pivot_table = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
                                             values_columns, filename)
             return filename,pivot_table
-
-            # if dictionary['preference_filter'] is None:
-            #     return pivot_table
-            # else:  # apply the preference filter
-            #     filter_name = dictionary['preference_filter']
-            #     value_name = dictionary['preference_value']
-            #     filtered_data = filtered_data[(
-            #             filtered_data[filter_name] == value_name)]
-            #     filtered_pivot = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
-            #                                        values_columns, filename).add_prefix('Total ')
-            #     pivot_table = pd.concat([pivot_table, filtered_pivot], axis=1)
-            #     return pivot_table
         except Exception as e:
             raise KeyError(f"Could not find field {e} in configuration file for table {filename}.")
 
