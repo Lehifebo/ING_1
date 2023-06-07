@@ -4,7 +4,6 @@ from datetime import datetime
 
 project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Get the path to the Reports directory relative to the MVPOOP directory
 hist_dir = os.path.join(project_dir, "historical_data")
 
 
@@ -21,7 +20,6 @@ class Team:
         append = self.team_name+"_data.csv"
         columns = []
         [columns.extend(list(data.columns)) for (name, data) in report]
-        #columns = report.index  # maybe from a config file
         self.path = self.hist_data_path+append
         try:
             self.historical_data = pd.read_csv(self.path)
@@ -34,9 +32,6 @@ class Team:
                 column_sum = table[column].sum()
                 row.append(column_sum)
         data.loc[0] = row
-        #print("test")
-        #print(type(data))
-        #quit()
         data['Date'] = datetime.now().date()
         data['CI Config Admin Group'] = self.team_name
         self.historical_data = pd.concat([self.historical_data, data], ignore_index=True)

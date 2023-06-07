@@ -36,7 +36,6 @@ class TestGraphGenerator(unittest.TestCase):
         self.assertEqual(ax.get_ylabel(), "Count")
         self.assertEqual(ax.get_title(), 'Issues for team ' + team.team_name)
 
-
     def test_create_team_graphs(self):
         team = self.teams[0]
         graph_generator = GraphGenerator(self.teams, self.graph_path)
