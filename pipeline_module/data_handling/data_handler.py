@@ -1,7 +1,5 @@
-import logging
-
-from .data_filterer import DataFilterer
-from .file_reader import FileReader
+from pipeline_module.data_handling.data_filterer import DataFilterer
+from pipeline_module.data_handling.file_reader import FileReader
 from pipeline_module.data.team import Team
 
 
@@ -28,7 +26,7 @@ class DataHandler:
             for file, table in self.pivot_tables:
                 report = table.loc[table.index.get_level_values('CI Config Admin Group') == team]
                 file_reports.append((file, report))
-            team = Team(team_dict[team]['email_list'], file_reports, team,self.hist_data_path)
+            team = Team(team_dict[team]['email_list'], file_reports, team, self.hist_data_path)
             team.add_to_history(file_reports)
             teams.append(team)
         return teams

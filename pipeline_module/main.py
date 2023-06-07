@@ -9,4 +9,3 @@ if __name__ == "__main__":
     pipeline.get_paths()
     pipeline.process_data()  # data stuff
     pipeline.generate_output()  # output stuff
-    # pipeline.remove_files()

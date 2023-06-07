@@ -6,7 +6,7 @@ project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class GraphGenerator:
-    def __init__(self, teams,graph_path):
+    def __init__(self, teams, graph_path):
         self.teams = teams
         self.graph_path = graph_path
 
@@ -44,8 +44,9 @@ class GraphGenerator:
     def create_tribe_lead_graphs(self, issues):
         for issue in issues:
             fig = self.issue_graph(issue)
-            fig.savefig(self.graph_path + "tl_"+issue+"_graph.png")
-    def tribe_lead_graph(self, issue):
+            fig.savefig(self.graph_path + "tl_" + issue + "_graph.png")
+
+    def tribe_lead_graph(self):
 
         datasets = self.get_data_tuple()
         for config, data in datasets:
@@ -67,32 +68,13 @@ class GraphGenerator:
             datasets.append((config_name, historical_data))
         return datasets
 
-    def issue_graph(self,issue):
+    def issue_graph(self, issue):
         fig, ax = plt.subplots()
         for team in self.teams:
             # plot the 'y' column from both dataframes on the same graph
-            ax.plot(team.historical_data[issue],  label=team.team_name)
+            ax.plot(team.historical_data[issue], label=team.team_name)
             # add labels and legend
         ax.set_xlabel('Date')
         ax.set_ylabel(issue)
         ax.legend()
         return fig
-
-
-    def everything_graphs(self):
-        datasets = self.get_data_tuples()
-        issues = ['Compliance result ID',
-                  'Vulnerability ID', 'Total Vulnerability ID']
-        fig, axs = plt.subplots(nrows=1, ncols=3, figsize=(20, 8))
-        for index, issue in enumerate(issues):
-            # maybe here could use issue function but difference with axs
-            for config, data in datasets:
-                # plot the 'y' column from both dataframes on the same graph
-                axs[index].plot(data[issue], label=config)
-                # add labels and legend
-            plt.xlabel('Date')
-            plt.ylabel(issue)
-            plt.legend()
-
-            # show the graph
-        plt.show()

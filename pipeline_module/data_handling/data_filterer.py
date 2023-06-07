@@ -19,12 +19,11 @@ class DataFilterer:
                 filters_by_filename[filename] = self.config[filename]["filters"]
             except KeyError as e:
                 if e.args[0] == 'filters':
-                    raise (f"The 'filters' field is not defined for {filename} configuration")
+                    raise f"The 'filters' field is not defined for {filename} configuration"
                 raise ("{} does not have a configuration defined in the file.".format(e))
         return filters_by_filename
 
     def filter_files(self):
-        # try:
         self.filters = self.get_filters()
         for current_tuple in self.data_tuples:
             self.map_team_names(current_tuple)
@@ -32,10 +31,6 @@ class DataFilterer:
             self.pivot_tables.append(
                 self.convert_to_pivot(filtered_data, current_tuple[0]))
         return self.pivot_tables
-            #return self.aggregate_pivot_tables()
-        # except Exception as e:
-        #     logging.error(str(e) + "\n" + str(e.__class__))
-        #     exit(0)
 
     def map_team_names(self, current_tuple):
         try:
@@ -70,7 +65,7 @@ class DataFilterer:
                     f'After filtering, the table {current_tuple[0]} is empty, make sure all filters are correct.')
             return filtered_data
         except Exception as e:
-            raise pandas.errors.UndefinedVariableError (f"Filter with {e} in the table {current_tuple[0]}.")
+            raise pandas.errors.UndefinedVariableError(f"Filter with {e} in the table {current_tuple[0]}.")
 
     def convert_to_pivot(self, filtered_data, filename):
         try:
@@ -86,19 +81,7 @@ class DataFilterer:
             # pivot table without the preference filter
             pivot_table = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
                                             values_columns, filename)
-            return filename,pivot_table
-
-            # if dictionary['preference_filter'] is None:
-            #     return pivot_table
-            # else:  # apply the preference filter
-            #     filter_name = dictionary['preference_filter']
-            #     value_name = dictionary['preference_value']
-            #     filtered_data = filtered_data[(
-            #             filtered_data[filter_name] == value_name)]
-            #     filtered_pivot = self.return_pivot(aggfuncs, fill_values, filtered_data, index_columns,
-            #                                        values_columns, filename).add_prefix('Total ')
-            #     pivot_table = pd.concat([pivot_table, filtered_pivot], axis=1)
-            #     return pivot_table
+            return filename, pivot_table
         except Exception as e:
             raise KeyError(f"Could not find field {e} in configuration file for table {filename}.")
 

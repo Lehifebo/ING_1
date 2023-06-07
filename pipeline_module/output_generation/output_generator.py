@@ -1,5 +1,5 @@
-from .graph_generator import GraphGenerator
-from .string_generator import StringGenerator
+from pipeline_module.output_generation.graph_generator import GraphGenerator
+from pipeline_module.output_generation.string_generator import StringGenerator
 
 
 class OutputGenerator:

@@ -1,7 +1,7 @@
 import os
 import json
 from data_handling import data_handler as dh
-from output_generation import output_generator as og
+from pipeline_module.output_generation import output_generator as og
 
 
 class Pipeline:
@@ -19,7 +19,7 @@ class Pipeline:
         self.graph_path = self.local
 
     def get_paths(self):
-        with open(self.local+self.paths_file['config']) as f:
+        with open(self.local + self.paths_file['config']) as f:
             self.config = json.load(f)
         self.input_path += self.paths_file['input']
         template_paths = []

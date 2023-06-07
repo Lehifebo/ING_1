@@ -1,6 +1,4 @@
-import json
 import logging
-import os
 
 
 def read_template(path):
@@ -30,7 +28,7 @@ class StringGenerator:
                 team_email = self.generate_team_email(team)
                 final_mail += team_email
                 final_mail += self.split_between_mails
-        except KeyError as e:
+        except KeyError:
             logging.error('You have more/less {} than columns in table')
             exit(0)
         # remove the final splitBetweenEmails
@@ -52,8 +50,7 @@ class StringGenerator:
         return email_list
 
     def fill_team_template(self, team):
-        data = []
-        data.append(team.team_name)
+        data = [team.team_name]
         for (file, report) in team.report:
             data.append(file)
             data.append(report.to_string())
@@ -72,8 +69,6 @@ class StringGenerator:
         string += self.tribe_lead_email
         string += self.splitInEmail
         final_tables = self.filter_overview()
-        #to_string = self.overview.to_string(index=False)
-        #print(to_string)
         try:
             string += self.tribe_lead_template.format(*final_tables)
         except IndexError:
@@ -83,7 +78,7 @@ class StringGenerator:
 
     def filter_overview(self):
         final_data = []
-        for (name,table) in self.overview:
+        for (name, table) in self.overview:
             final_data.append(name)
             columns = list(table.columns)
             # Group the table by 'CI Config Admin Group' and calculate the sum of 'Compliance result ID'
@@ -97,7 +92,8 @@ class StringGenerator:
             final_data.append(compressed_table)
         return final_data
 
-    def create_string_file(self, path, string):
+    @staticmethod
+    def create_string_file(path, string):
         f = open(path, "w")
         f.write(string)
         f.close()
