@@ -24,7 +24,6 @@ class DataFilterer:
         return filters_by_filename
 
     def filter_files(self):
-        # try:
         self.filters = self.get_filters()
         for current_tuple in self.data_tuples:
             self.map_team_names(current_tuple)
