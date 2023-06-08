@@ -7,5 +7,6 @@ if __name__ == "__main__":
         paths = json.load(f)
     pipeline = pl.Pipeline(paths)
     pipeline.get_paths()
-    pipeline.process_data()  # data stuff
-    pipeline.generate_output()  # output stuff
+    pipeline.process_data()
+    pipeline.generate_output()
+    #pipeline.remove_files()

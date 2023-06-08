@@ -44,7 +44,7 @@ class GraphGenerator:
     def create_tribe_lead_graphs(self, issues):
         for issue in issues:
             fig = self.issue_graph(issue)
-            fig.savefig(self.graph_path + "tl_" + issue + "_graph.png")
+            fig.savefig(self.graph_path + "tl_graphs/tl_" + issue + "_graph.png")
 
     def tribe_lead_graph(self):
 
