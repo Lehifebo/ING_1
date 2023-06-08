@@ -1,6 +1,6 @@
 {
   "config": "/configurations/configuration.json",
-  "input": "/excel_data/",
+  "input": "/input/",
   "string": "/output/text/emailStringTest.txt",
   "graph": "/output/",
   "templates": ["/configurations/template.txt","/configurations/tribeLeadTemplate.txt"],
