@@ -15,8 +15,8 @@ class Pipeline:
         self.input_path = self.local
         self.templates_path = self.local
         self.hist_data_path = self.local
-        self.string_path = self.local
-        self.graph_path = self.local
+        self.string_path = ""
+        self.graph_path = ""
 
     def get_paths(self):
         with open(self.local + self.paths_file['config']) as f:

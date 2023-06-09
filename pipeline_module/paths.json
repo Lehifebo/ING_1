@@ -1,9 +1,9 @@
 {
   "config": "/pipeline_module/configurations/configuration.json",
   "input": "/input/",
-  "string": "/output/text/emailStringTest.txt",
-  "graph": "/output/",
+  "string":"C:/Users/abigi/student.rug.nl/RUG SoftEng ING 1 - Documents/General/Strings/emailStringTest.txt",
+  "graph": "C:/Users/abigi/student.rug.nl/RUG SoftEng ING 1 - Documents/General/Graphs/",
   "templates": ["/pipeline_module/configurations/template.txt","/pipeline_module/configurations/tribeLeadTemplate.txt"],
   "historical": "/pipeline_module/data/historical_data/",
-  "local": "T:\\Git\\SoftEng"
+  "local": "D:\\GitHub\\SoftEng\\SoftEng"
 }
