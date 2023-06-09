@@ -10,12 +10,12 @@ from pipeline_module.data.team import Team
 class TestGraphGenerator(unittest.TestCase):
     def setUp(self):
         team_name = "Guardians"
-        hist_data_path = "../test_files/historical_data.csv"
+        hist_data_path = "D:/GitHub/SoftEng/SoftEng/testing/test_files/historical_data.csv"
         emailing_list = ["test1@test", "test2@test"]
         team = Team(emailing_list, None, team_name, hist_data_path)
         team.historical_data = pd.read_csv(team.hist_data_path)
         self.teams = [team]
-        self.graph_path = "../test_files/"
+        self.graph_path = "D:/GitHub/SoftEng/SoftEng/testing/test_files/"
 
     def test_fix_date(self):
         data = pd.DataFrame({
@@ -40,16 +40,16 @@ class TestGraphGenerator(unittest.TestCase):
         team = self.teams[0]
         graph_generator = GraphGenerator(self.teams, self.graph_path)
         graph_generator.create_team_graphs()
-        self.assertTrue(os.path.exists("../test_files/" + graph_generator.graph_path + team.team_name + "_graph.png"))
-        os.remove("../test_files/" + graph_generator.graph_path + team.team_name + "_graph.png")
+        self.assertTrue(os.path.exists(graph_generator.graph_path + team.team_name + "_graph.png"))
+        os.remove("D:/GitHub/SoftEng/SoftEng/testing/test_files/" + team.team_name + "_graph.png")
 
     def test_create_tribe_lead_graphs(self):
         issues = ['Issue Overdue']
         issue = issues[0]
         graph_generator = GraphGenerator(self.teams, self.graph_path)
         graph_generator.create_tribe_lead_graphs(issues)
-        self.assertTrue(os.path.exists("../test_files/" + graph_generator.graph_path + "tl_" + issue + "_graph.png"))
-        os.remove("../test_files/" + graph_generator.graph_path + "tl_" + issue + "_graph.png")
+        self.assertTrue(os.path.exists("D:/GitHub/SoftEng/SoftEng/testing/test_files/tl_graphs/" + "tl_" + issue + "_graph.png"))
+        os.remove("D:/GitHub/SoftEng/SoftEng/testing/test_files/tl_graphs/"  + "tl_" + issue + "_graph.png")
 
     def test_issue_graph(self):
         issue = "Issue Overdue"

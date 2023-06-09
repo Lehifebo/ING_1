@@ -6,7 +6,7 @@ from pipeline_module.data_handling.data_handler import DataHandler
 
 class TestDataHandler(unittest.TestCase):
     def setUp(self):
-        self.input_path = 'T:\\Git\\SoftEng\\testing\\test_files\\'
+        self.input_path = 'D:/GitHub/SoftEng/SoftEng/testing/test_files/'
         self.config = {
             "teams": {
                 "team1": {
@@ -17,7 +17,7 @@ class TestDataHandler(unittest.TestCase):
                 }
             }
         }
-        self.hist_data_path = 'T:\\Git\\SoftEng\\testing\\test_files\\'
+        self.hist_data_path = 'D:/GitHub/SoftEng/SoftEng/testing/test_files/'
         self.data_handler = DataHandler(self.input_path, self.config, self.hist_data_path)
 
     def test_generate_teams(self):

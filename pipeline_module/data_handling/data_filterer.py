@@ -19,8 +19,8 @@ class DataFilterer:
                 filters_by_filename[filename] = self.config[filename]["filters"]
             except KeyError as e:
                 if e.args[0] == 'filters':
-                    raise f"The 'filters' field is not defined for {filename} configuration"
-                raise ("{} does not have a configuration defined in the file.".format(e))
+                    raise KeyError (f"The 'filters' field is not defined for {filename} configuration")
+                raise ValueError ("{} does not have a configuration defined in the file.".format(e))
         return filters_by_filename
 
     def filter_files(self):
@@ -36,8 +36,8 @@ class DataFilterer:
         try:
             current_tuple[1][self.config['aggregateColumn']] = current_tuple[1][self.config['aggregateColumn']].apply(
                 self.get_mapping)
-        except Exception as e:
-            raise e
+        except KeyError as e:
+            raise KeyError(f"error with mapping team name : {e}")
 
     def get_mapping(self, team_name):
         team_mapping = self.config['teams']

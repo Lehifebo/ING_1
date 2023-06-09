@@ -10,7 +10,7 @@ class TestTeam(unittest.TestCase):
         self.report = [("Table1", pd.DataFrame({'column1': [1, 2, 3], 'column2': [4, 5, 6]})),
                        ("Table2", pd.DataFrame({'column3': [7, 8, 9]}))]
         self.team_name = "team1"
-        self.hist_data_path = "T:\\Git\\SoftEng\\testing\\test_files\\"
+        self.hist_data_path = "D:/GitHub/SoftEng/SoftEng/testing/test_files/"
 
         self.team = Team(self.emailing_list, self.report, self.team_name, self.hist_data_path)
 

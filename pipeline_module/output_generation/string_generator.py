@@ -11,7 +11,7 @@ class StringGenerator:
         self.team_list = team_list
         self.template = read_template(template_paths[0])
         self.tribe_lead_template = read_template(template_paths[1])
-        self.splitInEmail = "\n\nsplitInEmail\n\n"
+        self.split_in_email = "\n\nsplitInEmail\n\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
         self.tribe_lead_email = tribe_lead_email
         self.overview = overview
@@ -46,7 +46,7 @@ class StringGenerator:
         for item in team.emailing_list:
             email_list += item + ","
         email_list = email_list[:-1]
-        email_list += self.splitInEmail
+        email_list += self.split_in_email
         return email_list
 
     def fill_team_template(self, team):
@@ -67,7 +67,7 @@ class StringGenerator:
         string = ''
         string += self.split_between_mails
         string += self.tribe_lead_email
-        string += self.splitInEmail
+        string += self.split_in_email
         final_tables = self.filter_overview()
         try:
             string += self.tribe_lead_template.format(*final_tables)
