@@ -3,9 +3,12 @@ import pandas as pd
 from pipeline_module.data_handling.data_filterer import DataFilterer
 
 
+# Define the unit test class
 class TestDataFilterer(unittest.TestCase):
     def setUp(self):
+        # Set up the necessary configurations and data tuples for the test
         self.config = {
+            # Configuration for file1
             "filenames": ["file1", "file2"],
             "file1": {
                 "filters": {
@@ -20,6 +23,7 @@ class TestDataFilterer(unittest.TestCase):
                     }
                 }
             },
+            # Configuration for file2
             "file2": {
                 "filters": {
                     "column1": "value3"
@@ -32,6 +36,7 @@ class TestDataFilterer(unittest.TestCase):
                     }
                 }
             },
+            # Team configurations
             "teams": {
                 "team1": {
                     "aliases": ["alias1", "alias2"]
@@ -43,12 +48,14 @@ class TestDataFilterer(unittest.TestCase):
             "aggregateColumn": "team"
         }
 
+        # Sample data tuples for testing
         self.data_tuples = [
             ("file1", pd.DataFrame({"column1": ["value1", "value2", "value3"], "column2": [1, 2, 3]})),
             ("file2", pd.DataFrame({"column1": ["value3", "value4", "value5"], "column2": [4, 5, 6]}))
         ]
 
     def test_get_filters(self):
+        # Test the 'get_filters' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         filters = data_filterer.get_filters()
         expected_filters = {
@@ -63,6 +70,7 @@ class TestDataFilterer(unittest.TestCase):
         self.assertEqual(filters, expected_filters)
 
     def test_map_team_names(self):
+        # Test the 'map_team_names' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         current_tuple = ("file1", pd.DataFrame({"team": ["alias2", "alias3", "alias1"]}))
 
@@ -72,12 +80,14 @@ class TestDataFilterer(unittest.TestCase):
         pd.testing.assert_frame_equal(current_tuple[1], expected_result)
 
     def test_get_mapping(self):
+        # Test the 'get_mapping' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         team_name = "alias1"
         mapping = data_filterer.get_mapping(team_name)
         self.assertEqual(mapping, "team1")
 
     def test_filter_data(self):
+        # Test the 'filter_data' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         current_tuple = ("file1", pd.DataFrame({"column1": ["value1", "value1", "value2"], "column2": [1, 2, 3],
                                                 "column3": ["value3", "value2", "value3"]}))
@@ -100,6 +110,7 @@ class TestDataFilterer(unittest.TestCase):
         pd.testing.assert_frame_equal(filtered_data, expected_result)
 
     def test_convert_to_pivot(self):
+        # Test the 'convert_to_pivot' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         filtered_data = pd.DataFrame({"column1": ["value1", "value2"], "column2": [5, 7]})
         filename = "file2"
@@ -112,6 +123,7 @@ class TestDataFilterer(unittest.TestCase):
         self.assertEqual(pivot_table.all(), expected_pivot_table.all())
 
     def test_return_pivot(self):
+        # Test the 'return_pivot' method
         data_filterer = DataFilterer(self.config, self.data_tuples)
         filtered_data = pd.DataFrame({"column1": ["value1", "value2"], "column2": [5, 7]})
         index_columns = ["column1"]

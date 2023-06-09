@@ -4,8 +4,10 @@ import pandas as pd
 from pipeline_module.data.team import Team
 
 
+# Define the unit test class
 class TestTeam(unittest.TestCase):
     def setUp(self):
+        # Set up the necessary data and objects for testing
         self.emailing_list = ["example1@example.com", "example2@example.com"]
         self.report = [("Table1", pd.DataFrame({'column1': [1, 2, 3], 'column2': [4, 5, 6]})),
                        ("Table2", pd.DataFrame({'column3': [7, 8, 9]}))]
@@ -15,6 +17,7 @@ class TestTeam(unittest.TestCase):
         self.team = Team(self.emailing_list, self.report, self.team_name, self.hist_data_path)
 
     def test_add_to_history(self):
+        # Test the 'add_to_history' method
         # Call the add_to_history method
         self.team.add_to_history(self.report)
 

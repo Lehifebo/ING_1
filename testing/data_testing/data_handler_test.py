@@ -4,8 +4,10 @@ import pandas as pd
 from pipeline_module.data_handling.data_handler import DataHandler
 
 
+# Define the unit test class
 class TestDataHandler(unittest.TestCase):
     def setUp(self):
+        # Set up the necessary paths and configurations for the test
         self.input_path = 'D:/GitHub/SoftEng/SoftEng/testing/test_files/'
         self.config = {
             "teams": {
@@ -20,7 +22,9 @@ class TestDataHandler(unittest.TestCase):
         self.hist_data_path = 'D:/GitHub/SoftEng/SoftEng/testing/test_files/'
         self.data_handler = DataHandler(self.input_path, self.config, self.hist_data_path)
 
+    # Define a test case for generating teams
     def test_generate_teams(self):
+        # Set up the mock data and objects for testing
         pivot_tables = [('file1.xlsx', dataframe1), ('file2.xlsx', dataframe2)]
         self.data_handler.pivot_tables = pivot_tables
 
@@ -39,8 +43,10 @@ class TestDataHandler(unittest.TestCase):
 
         self.data_handler.Team = team_mock
 
+        # Call the method being tested
         teams = self.data_handler.generate_teams()
 
+        # Check the expected results
         self.assertEqual(len(teams), 2)
 
 
@@ -84,7 +90,6 @@ team2_data_file2 = {
     "column2": [5]
 }
 team2_report_file2 = pd.DataFrame(team2_data_file2, index=["team2"])
-
 
 if __name__ == '__main__':
     unittest.main()
