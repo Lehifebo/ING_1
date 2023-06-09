@@ -8,7 +8,7 @@ It then splits and aggregates the pivot tables based on the teams in order to ge
 Below are the instructions for any user who wishes to use the application.
 
 ## Excel Data files:
-* These are the conditions the Excel files need to have in order for the program to work:
+These are the conditions the Excel files need to have in order for the program to work:
 * The Excel files need to be in the input folder defined in the file paths.json.
 * The Excel files need be in .xlsx format.
 * The Excel files need to have an underscore “_” in the name.

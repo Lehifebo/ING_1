@@ -48,50 +48,50 @@
     "teams":{
         "Guardians":{
             "aliases":["Config0001","Config001","be+nl/CoE Document & Content Services BE/Deliver Your Message/Guardians","T00539 - DocumentumLWD"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         },
         "Base":{
             "aliases":["Config0002","Config002","be+nl/Document & Content Services NL/Communication as a Service/Base","T00609 - E-motion"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         },
         "Paper & Send":{
             "aliases":["Config0003","Config003","be+nl/Document & Content Services NL/Communication as a Service/Paper & Send","T01333 - Paper & Send"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         },
         "Custodian":{
             "aliases":["Config0004","Config004","be+nl/Document & Content Services NL/Content Interaction/Custodian","T00977 - InfoArchive"],
-            "email_list":["email1","email2"]
+            "email_list":["theo_mcn7@yahoo.com"]
         },
         "DQ & R":{
             "aliases":["Config0005","Config005","be+nl/Document & Content Services NL/Content Interaction/Data Quality &Retention","T02347 - DataQuality and Retention"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         },
         "Superflow":{
             "aliases":["Config0006","Config006","be+nl/Document & Content Services NL/Content Interaction/Superflow","T01332 - Pandoralytics","T01594 - Superflow"],
-            "email_list":["email1","email2"]
+            "email_list":["theo_mcn7@yahoo.com"]
         },
         "Blanco":{
             "aliases":["Config0007","Config007","be+nl/Document & Content Services NL/Content Processing/Blanco - 3MO","T00277 - Blanco-3MO"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         },
         "Hclix":{
             "aliases":["Config0008","Config008","be+nl/Document & Content Services NL/Content Processing/Hclix","T08399 - Hclix"],
-            "email_list":["email1","email2"]
+            "email_list":["theo_mcn7@yahoo.com"]
         },
         "Obelix":{
             "aliases":["Config0009","Config009","be+nl/Document & Content Services NL/Content Processing/Obelix","T00276 - Obelix","T00163 - BE-DCS-Sailors"],
-            "email_list":["email1","email2"]
+            "email_list":["theo_mcn7@yahoo.com"]
         },
         "CapCom":{
             "aliases":["Config0010","Config010","T05776 - CapCom"],
-            "email_list":["email1","email2"]
+            "email_list":["theo_mcn7@yahoo.com"]
         },
         "Chapter Content Delivery":{
             "aliases":["Config0011","Config011","T07716 - Chapter Content Delivery"],
-            "email_list":["email1","email2"]
+            "email_list":["mocanu.teo07@gmail.com"]
         }
     },
-    "tribe_lead": "emailTribeLead",
+    "tribe_lead": "mocanu.teo07@gmail.com",
     "issue_columns": ["Vulnerability ID", "Asset owner", "Issue Overdue"]
 
 }

@@ -11,7 +11,7 @@ class StringGenerator:
         self.team_list = team_list
         self.template = read_template(template_paths[0])
         self.tribe_lead_template = read_template(template_paths[1])
-        self.split_in_email = "\n\nsplitInEmail\n\n"
+        self.split_in_email = "\n\nsplitInEmail\n"
         self.split_between_mails = "\nsplitBetweenEmails\n"
         self.tribe_lead_email = tribe_lead_email
         self.overview = overview

@@ -1,7 +1,6 @@
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello Guardians,
 
 This week score:
@@ -24,10 +23,9 @@ Guardians             [Appl001]        Medium                             12
 
 Best regards
 splitBetweenEmails
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello Base,
 
 This week score:
@@ -53,10 +51,9 @@ Base                  [Appl002]        High                                8
 
 Best regards
 splitBetweenEmails
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello Paper & Send,
 
 This week score:
@@ -81,10 +78,9 @@ Paper & Send          [Appl003]        Critical                            2
 
 Best regards
 splitBetweenEmails
-email1,email2
+theo_mcn7@yahoo.com
 
 splitInEmail
-
 Hello Custodian,
 
 This week score:
@@ -109,10 +105,9 @@ Custodian             [Appl004]        High                                4
 
 Best regards
 splitBetweenEmails
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello DQ & R,
 
 This week score:
@@ -138,10 +133,9 @@ DQ & R                [Appl005]        High                                1
 
 Best regards
 splitBetweenEmails
-email1,email2
+theo_mcn7@yahoo.com
 
 splitInEmail
-
 Hello Superflow,
 
 This week score:
@@ -164,10 +158,9 @@ Index: []
 
 Best regards
 splitBetweenEmails
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello Blanco,
 
 This week score:
@@ -190,10 +183,9 @@ Index: []
 
 Best regards
 splitBetweenEmails
-email1,email2
+theo_mcn7@yahoo.com
 
 splitInEmail
-
 Hello Hclix,
 
 This week score:
@@ -216,10 +208,9 @@ Index: []
 
 Best regards
 splitBetweenEmails
-email1,email2
+theo_mcn7@yahoo.com
 
 splitInEmail
-
 Hello Obelix,
 
 This week score:
@@ -243,10 +234,9 @@ Obelix                [Appl009]        High                                1
 
 Best regards
 splitBetweenEmails
-email1,email2
+theo_mcn7@yahoo.com
 
 splitInEmail
-
 Hello CapCom,
 
 This week score:
@@ -270,10 +260,9 @@ CapCom                [Appl010]        Low                                 3
 
 Best regards
 splitBetweenEmails
-email1,email2
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello Chapter Content Delivery,
 
 This week score:
@@ -296,10 +285,9 @@ Index: []
 
 Best regard
 splitBetweenEmails
-emailTribeLead
+mocanu.teo07@gmail.com
 
 splitInEmail
-
 Hello,
 
 This week performance of the teams:
